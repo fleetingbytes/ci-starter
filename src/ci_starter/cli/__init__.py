@@ -9,6 +9,6 @@ configure_logging(logging_configuration)
 logger = getLogger(__name__)
 
 
-def main() -> None:
+def cli() -> None:
     print(f"Hello from ci-starter version {version}!")
     logger.debug("Hello from log")

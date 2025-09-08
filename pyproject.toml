@@ -28,7 +28,7 @@ Issues = "http://github.com/fleetingbytes/ci-starter/issues"
 Changelog = "http://github.com/fleetingbytes/ci-starter/blob/master/CHANGELOG.md"
 
 [project.scripts]
-ci-start = "ci_starter.cli:main"
+ci-start = "ci_starter.cli:cli"
 
 [build-system]
 requires = ["uv_build>=0.8.15,<0.9.0"]
