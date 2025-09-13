@@ -55,7 +55,6 @@ jobs:
 
       - name: Setup | Install Project Dependencies for Test
         env:
-          UV_LOCKED: true
           UV_NO_MANAGED_PYTHON: true
         run: uv sync --group ${{ inputs.test-dependency-group }}
 
