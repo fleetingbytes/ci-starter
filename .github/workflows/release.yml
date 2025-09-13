@@ -94,7 +94,6 @@ jobs:
         shell: bash
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          UV_LOCKED: false
         run: |
           ./.github/workflows/verify-upstream-has-not-changed.sh
           uv run -- semantic-release --config ${{ inputs.semantic-release-config-file }} --verbose --strict version --skip-build
