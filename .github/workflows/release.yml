@@ -48,7 +48,6 @@ jobs:
       new-release-tag: ${{ steps.release.outputs.tag }}
 
     env:
-      UV_LOCKED: true
       UV_NO_MANAGED_PYTHON: true
 
     steps:
