@@ -58,19 +58,18 @@ jobs:
 
       - name: Setup | Install python-semantic-release
         env:
-          UV_LOCKED: true
           UV_NO_MANAGED_PYTHON: true
         run: uv tool install python-semantic-release
 
       - name: Setup | Install Project
         env:
-          UV_LOCKED: true
           UV_NO_MANAGED_PYTHON: true
         run: uv sync --verbose
 
       - name: Build | Build Next Version Artifacts
         id: version
         env:
+          UV_NO_MANAGED_PYTHON: true
           GH_TOKEN: "none"
         run: uv run -- semantic-release --config ${{ inputs.semantic-release-config-file }} --verbose version --no-changelog --no-commit --no-tag
 
