@@ -18,7 +18,10 @@ classifiers = [
 ]
 dependencies = [
     "click>=8.2.1",
+    "gitpython>=3.1.45",
+    "importlib-resources>=5.10 ; python_full_version < '3.12'",
     "platformdirs>=4.4.0",
+    "tomli-w>=1.2.0",
 ]
 
 [project.urls]
@@ -37,8 +40,13 @@ build-backend = "uv_build"
 
 [dependency-groups]
 lint = [
-    "ruff>=0.12.12",
+    "ruff>=0.13",
 ]
 test = [
     "pytest>=8.4.2",
+]
+
+[tool.uv.workspace]
+members = [
+    "../../my-test.project/master",
 ]
