@@ -2,6 +2,31 @@
 
 <!-- version list -->
 
+## v0.3.0 (2025-09-13)
+
+### Continuous Integration
+
+- Debug build: uv sync
+  ([`61b3292`](https://github.com/fleetingbytes/ci-starter/commit/61b32926a1e548dcc1e600466efe9f857371bc9e))
+
+- Debug build: uv sync
+  ([`b683be4`](https://github.com/fleetingbytes/ci-starter/commit/b683be4604df9f49c41f77af8c2ce6621394b0f6))
+
+- Don't use uv --locked when installing the project
+  ([`0ab202a`](https://github.com/fleetingbytes/ci-starter/commit/0ab202a1dda93c6a3115124c3f25b3e6256423ce))
+
+- Don't use uv --locked when installing the project for release
+  ([`d6132b9`](https://github.com/fleetingbytes/ci-starter/commit/d6132b94201f7f1a3c4fb15661403acaecbc3e48))
+
+- Don't use uv --locked when installing the project for test
+  ([`0c5d020`](https://github.com/fleetingbytes/ci-starter/commit/0c5d0200dbac733a791b29b99485bbd2a4e736d6))
+
+### Features
+
+- Render semantic-release config file
+  ([`e735da7`](https://github.com/fleetingbytes/ci-starter/commit/e735da759a1f64414cc63750d3579d33b2bb2543))
+
+
 ## v0.2.0 (2025-09-08)
 
 ### Chores
