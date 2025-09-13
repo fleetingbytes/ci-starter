@@ -66,7 +66,7 @@ jobs:
         env:
           UV_LOCKED: true
           UV_NO_MANAGED_PYTHON: true
-        run: uv sync
+        run: RUST_LOG=trace uv sync --verbose
 
       - name: Build | Build Next Version Artifacts
         id: version
