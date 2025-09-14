@@ -45,8 +45,3 @@ lint = [
 test = [
     "pytest>=8.4.2",
 ]
-
-[tool.uv.workspace]
-members = [
-    "../../my-test.project/master",
-]
