@@ -2,6 +2,22 @@
 
 <!-- version list -->
 
+## v0.3.2 (2025-09-14)
+
+### Continuous Integration
+
+- Upgrade to actions/setup-python v6.0.0
+  ([`cb8ad09`](https://github.com/fleetingbytes/ci-starter/commit/cb8ad09d56a8a03999b5fe62da46837c7e98ebbc))
+
+- Upgrade to astral-sh/setup-uv v6.6.1
+  ([`f951646`](https://github.com/fleetingbytes/ci-starter/commit/f951646e67c9dcbf664d11982f6132785d5c49a4))
+
+### Refactoring
+
+- Introduce presets (things we can configure, but are not configurable by the user)
+  ([`47dece6`](https://github.com/fleetingbytes/ci-starter/commit/47dece64422145a30b29bb564bdafac93c1b9f82))
+
+
 ## v0.3.1 (2025-09-14)
 
 ### Bug Fixes
