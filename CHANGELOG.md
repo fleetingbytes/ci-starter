@@ -2,6 +2,30 @@
 
 <!-- version list -->
 
+## v0.3.1 (2025-09-14)
+
+### Bug Fixes
+
+- Improved parsing of upstream branch name
+  ([`3cbf976`](https://github.com/fleetingbytes/ci-starter/commit/3cbf9764d534e15415eefbaee96e7b62bae39509))
+
+- Remove unused workspace
+  ([`75037c7`](https://github.com/fleetingbytes/ci-starter/commit/75037c795bde0bcce926872225d714fd5d6a8734))
+
+### Code Style
+
+- Add type hints
+  ([`dca2182`](https://github.com/fleetingbytes/ci-starter/commit/dca218261f73fa2691c3be5af9fb619d793f4f55))
+
+### Continuous Integration
+
+- Make semantic release config file name not configurable by the user
+  ([`3101632`](https://github.com/fleetingbytes/ci-starter/commit/31016326c26b1b0cd3b7359e0454c485b9f11d60))
+
+- Remove redundant env var
+  ([`6bb3322`](https://github.com/fleetingbytes/ci-starter/commit/6bb3322210a28d1b130eb890ed0d75c4dce2ec90))
+
+
 ## v0.3.0 (2025-09-13)
 
 ### Continuous Integration
