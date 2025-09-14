@@ -11,12 +11,12 @@ permissions:
 
 env:
   # Configurable by user
-  SEMANTIC_RELEASE_CONFIG_FILE: "./semantic-release.toml"
   PACKAGE_NAME: "ci-starter"
   DISTRIBUTION_FILE_INCIPIT: "ci_starter"
   TEST_DEPENDENCY_GROUP: "test"
   RUN_TEST_COMMAND: "uv run -- pytest --verbose"
   # Not configurable by user
+  SEMANTIC_RELEASE_CONFIG_FILE: "./semantic-release.toml"
   DISTRIBUTION_ARTIFACTS_NAME: "dist"
   DISTRIBUTION_ARTIFACTS_DIR: "dist"
   LOCK_FILE_ARTIFACT: "uv.lock"
