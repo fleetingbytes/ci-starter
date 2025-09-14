@@ -66,6 +66,6 @@ ignore_token_for_push = false
 insecure = false
 
 [semantic_release.publish]
-dist_glob_patterns = ["dist/*"]
+dist_glob_patterns = ["PLACEHOLDER_DISTRIBUTION_ARTIFACTS_DIR/*"]
 upload_to_vcs_release = true
 
