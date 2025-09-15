@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v0.3.3 (2025-09-15)
+
+### Refactoring
+
+- Write semantic release config
+  ([`d779670`](https://github.com/fleetingbytes/ci-starter/commit/d779670ee6755c82c7236c8a428f1ca673f590bc))
+
+
 ## v0.3.2 (2025-09-14)
 
 ### Continuous Integration
