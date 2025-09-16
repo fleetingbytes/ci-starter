@@ -8,7 +8,7 @@ from click import command, echo, option, version_option
 
 from .. import __version__ as version
 from .. import generate_semantic_release_config
-from ..errors import RemoteNotFoundError
+from ..errors import CiStarterError
 from ..logging_conf import logging_configuration
 from .callbacks import set_module_name, set_workdir
 from .validations import validate_test_group, validate_workflow_file_name
@@ -52,6 +52,6 @@ def cli(
     logger.debug("test_command = %s", test_command)
     try:
         generate_semantic_release_config(workdir.project, workdir.config)
-    except RemoteNotFoundError as err:
+    except CiStarterError as err:
         logger.exception(err)
         exit(err.code)

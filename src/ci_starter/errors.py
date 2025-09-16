@@ -1,5 +1,5 @@
 class CiStarterError(Exception):
-    pass
+    code = -1
 
 
 class RemoteNotFoundError(CiStarterError):
