@@ -1,6 +1,6 @@
 # ci-starter
 
-Kick-starts the semantic release pipeline for your Python project on GitHub. It creates an opinionated configuration file for python-semantic-release, _semantic-release.toml_ and a pipeline with reusable workflows in _.github/workflows_.
+Kickstarts the semantic release pipeline for your Python project on GitHub. It creates an opinionated configuration file for python-semantic-release, _semantic-release.toml_ and a pipeline with reusable workflows in _.github/workflows_.
 
 ## Usage
 
