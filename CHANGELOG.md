@@ -2,6 +2,27 @@
 
 <!-- version list -->
 
+## v0.3.4 (2025-09-16)
+
+### Documentation
+
+- Spelling
+  ([`a48fcf6`](https://github.com/fleetingbytes/ci-starter/commit/a48fcf697faccf2e0146c6760f9a84b61a3d3a95))
+
+- Spelling
+  ([`8a809ba`](https://github.com/fleetingbytes/ci-starter/commit/8a809babb14b310a84faf23f971172aa326eb50d))
+
+### Refactoring
+
+- General CiStarterError handling
+  ([`7e4ddb3`](https://github.com/fleetingbytes/ci-starter/commit/7e4ddb32154dd1b1158f57c0dae5f83a95605d6b))
+
+### Testing
+
+- Test cli
+  ([`ae4c301`](https://github.com/fleetingbytes/ci-starter/commit/ae4c301b9c3b53d54ad87f426acb0ddae3c5c9dc))
+
+
 ## v0.3.3 (2025-09-15)
 
 ### Refactoring
