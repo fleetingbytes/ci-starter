@@ -1,9 +1,10 @@
 from logging import getLogger
 from logging.config import dictConfig as configure_logging
 from pathlib import Path
+from sys import exit
 
 from click import Path as ClickPath
-from click import command, echo, option
+from click import command, echo, option, version_option
 
 from .. import __version__ as version
 from .. import generate_semantic_release_config
@@ -18,6 +19,7 @@ logger = getLogger(__name__)
 
 
 @command()
+@version_option()
 @option(
     "-C",
     "--project-path",
@@ -52,3 +54,4 @@ def cli(
         generate_semantic_release_config(workdir.project, workdir.config)
     except RemoteNotFoundError as err:
         logger.exception(err)
+        exit(err.code)
