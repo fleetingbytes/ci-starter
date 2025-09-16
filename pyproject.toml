@@ -1,7 +1,7 @@
 [project]
 name = "ci-starter"
 version = "0.3.3"
-description = "Kick-starts the semantic release pipeline for your Python project"
+description = "Kickstarts the semantic release pipeline for your Python project"
 readme = "README.md"
 authors = [
     { name = "fleetingbytes", email = "7075397+fleetingbytes@users.noreply.github.com" }
