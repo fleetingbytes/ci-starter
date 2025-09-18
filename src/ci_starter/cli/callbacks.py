@@ -39,9 +39,8 @@ def get_project_name(pyproject_toml_path: Path) -> str:
     return project_name
 
 
-def set_module_name(ctx: Context, _param: Parameter, module_name: str | None) -> str:
+def set_module_name(pyproject_toml_path: Path, module_name: str | None) -> str:
     if not module_name:
-        pyproject_toml_path = ctx.params["workdir"].pyproject_toml
         package_name = get_project_name(pyproject_toml_path)
         module_name = normalize(package_name)
         return module_name

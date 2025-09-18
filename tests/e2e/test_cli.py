@@ -12,4 +12,4 @@ def test_version(cli_runner: CliRunner) -> None:
 def test_help(cli_runner: CliRunner) -> None:
     result: Result = cli_runner.invoke(cli, ["--help"])
     assert result.stdout.startswith("Usage")
-    assert result.stdout.strip().endswith("exit.")
+    assert result.stdout.strip().endswith("workflows")
