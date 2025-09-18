@@ -11,7 +11,7 @@ def test_helper_script_created(
 ) -> None:
     expected_script, path = helper_script
 
-    result: Result = cli_runner.invoke(cli, ["-C", test_project_path_str])
+    result: Result = cli_runner.invoke(cli, ["-C", test_project_path_str, "workflows"])
     assert result.exit_code == SUCCESSFUL_RETURN_CODE
 
     actual_script = path.read_text(encoding="utf-8")
