@@ -27,7 +27,7 @@ from tests.e2e.constants import (
 
 @fixture
 def cli_runner() -> CliRunner:
-    return CliRunner()
+    return CliRunner(catch_exceptions=False)
 
 
 @fixture

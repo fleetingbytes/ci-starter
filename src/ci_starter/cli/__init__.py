@@ -7,7 +7,7 @@ from click import Context, echo, group, option, pass_context, pass_obj, version_
 from click import Path as ClickPath
 
 from .. import __version__ as version
-from .. import generate_semantic_release_config as generate_semantic_release_config
+from .. import generate_helper_script, generate_semantic_release_config
 from ..errors import CiStarterError
 from ..logging_conf import logging_configuration
 from .callbacks import WorkDir as WorkDir
@@ -76,3 +76,5 @@ def workflows(
     logger.debug("workdir = %s", workdir)
     logger.debug("test_group = %s", test_group)
     logger.debug("test_command = %s", test_command)
+
+    generate_helper_script(workdir.helper_script)
