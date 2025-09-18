@@ -2,6 +2,32 @@
 
 <!-- version list -->
 
+## v0.4.0 (2025-09-18)
+
+### Chores
+
+- Update uv_build version
+  ([`b487b6f`](https://github.com/fleetingbytes/ci-starter/commit/b487b6fffd2097f62313741ce38cc8b286a7f030))
+
+### Features
+
+- Generate helper script
+  ([`bd108b7`](https://github.com/fleetingbytes/ci-starter/commit/bd108b75af33d78039b4eab43bb2c5b9d4e392c1))
+
+### Refactoring
+
+- Changed cli so that it has subcommands
+  ([`da8e00f`](https://github.com/fleetingbytes/ci-starter/commit/da8e00ffea76982a5eb9ae8b70d893554610e71b))
+
+### Testing
+
+- Rewrite tests to adapt to future cli
+  ([`f4d8463`](https://github.com/fleetingbytes/ci-starter/commit/f4d8463bc5123130c9a8a5dbb51256e329a7c15c))
+
+- Write test for creation of helper script
+  ([`c426b29`](https://github.com/fleetingbytes/ci-starter/commit/c426b298cbdc82ea368364119c8cc91935f3fcf3))
+
+
 ## v0.3.4 (2025-09-16)
 
 ### Documentation
