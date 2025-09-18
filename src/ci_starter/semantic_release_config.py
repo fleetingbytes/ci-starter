@@ -1,27 +1,18 @@
 from collections.abc import Iterable
 from pathlib import Path
-from sys import version_info
 from tomllib import loads
 
 from tomli_w import dump
 
+from .asset_getter import get_asset
 from .placeholder import Placeholder
-
-OLD_PYTHON_MINOR_VERSION = 11
-
-if version_info.minor == OLD_PYTHON_MINOR_VERSION:
-    from importlib_resources import files
-else:
-    from importlib.resources import files
 
 
 class SemanticReleaseConfig:
     @staticmethod
     def get_semantic_release_toml_template() -> str:
-        assets = files(f"{__package__}.assets")
-        sr_config_asset: str = (
-            assets.joinpath("toml").joinpath("semantic-release.toml").read_text(encoding="utf-8")
-        )
+        asset_path = Path("toml/semantic-release.toml")
+        sr_config_asset: str = get_asset(asset_path)
         return sr_config_asset
 
     @staticmethod
