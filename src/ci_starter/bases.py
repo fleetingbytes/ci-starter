@@ -12,7 +12,7 @@ class ManagedFileBase(AbstractManagedFile):
         return self.base_dir / self.name
 
     def write(self) -> None:
-        with self.path_relative_to_base_dir.open("wb") as file:
+        with self.path.open("wb") as file:
             file.write(self.content)
 
 
