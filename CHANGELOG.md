@@ -2,6 +2,22 @@
 
 <!-- version list -->
 
+## v0.4.2 (2025-09-19)
+
+### Bug Fixes
+
+- **test**: Hardcode entry point name
+  ([`3d09dce`](https://github.com/fleetingbytes/ci-starter/commit/3d09dce94447ede1511aaaba5de11f5581a15c60))
+
+### Testing
+
+- Refactor fixtures
+  ([`3aa03ec`](https://github.com/fleetingbytes/ci-starter/commit/3aa03ec83e74ffcfc2cf2c9779d7f8c77cea31b3))
+
+- Rewrite cli tests
+  ([`4e27f6f`](https://github.com/fleetingbytes/ci-starter/commit/4e27f6f2ceeac07e517cb05a16cc51b68ae1776b))
+
+
 ## v0.4.1 (2025-09-19)
 
 ### Bug Fixes
