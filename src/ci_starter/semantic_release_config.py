@@ -2,15 +2,14 @@ from collections.abc import Iterable
 from pathlib import Path
 from tomllib import loads
 
-from tomli_w import dump
-
 from .asset_getter import get_asset
+from .bases import SemanticReleaseConfigurationBase
 from .placeholder import Placeholder
 
 
-class SemanticReleaseConfig:
+class SemanticReleaseConfiguration(SemanticReleaseConfigurationBase):
     @staticmethod
-    def get_semantic_release_toml_template() -> str:
+    def get_configuration_toml_template() -> str:
         asset_path = Path("toml/semantic-release.toml")
         sr_config_asset: str = get_asset(asset_path)
         return sr_config_asset
@@ -21,18 +20,21 @@ class SemanticReleaseConfig:
             s = s.replace(placeholder.placeholder, placeholder.value)
         return s
 
-    def __init__(self, repo_name: str, distribution_artifacts_dir: str) -> None:
+    def __init__(self, repo_dir: Path, repo_name: str, distribution_artifacts_dir: str) -> None:
+        self._repo_dir: Path = repo_dir
+
+        toml_template: str = self.get_configuration_toml_template()
         placeholders: Iterable[Placeholder] = (
             Placeholder("repo name", repo_name),
             Placeholder("distribution artifacts dir", distribution_artifacts_dir),
         )
-        toml_template: str = self.get_semantic_release_toml_template()
-        self.toml_str: str = self.replace_placeholders(toml_template, placeholders)
+
+        self.configuration_toml_str: str = self.replace_placeholders(toml_template, placeholders)
 
     @property
-    def toml_dict(self) -> dict[str, str]:
-        return loads(self.toml_str)
+    def repo_dir(self) -> Path:
+        return self._repo_dir
 
-    def write_to_path(self, path: Path) -> None:
-        with path.open("wb") as target_config_file:
-            dump(self.toml_dict, target_config_file, multiline_strings=True)
+    @property
+    def toml_dict(self) -> dict:
+        return loads(self.configuration_toml_str)

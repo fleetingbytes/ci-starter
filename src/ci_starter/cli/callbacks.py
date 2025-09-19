@@ -10,7 +10,6 @@ from click import Context, Parameter
 class WorkDir:
     project: Path
     pyproject_toml: Path = field(init=False)
-    config: Path = field(init=False)
     workflows: Path = field(init=False)
     helper_script: Path = field(init=False)
     build: Path = field(init=False)
@@ -19,7 +18,6 @@ class WorkDir:
 
     def __post_init__(self):
         self.pyproject_toml = self.project / "pyproject.toml"
-        self.config = self.project / "semantic-release.toml"
         self.workflows = self.project / ".github" / "workflows"
         self.helper_script = self.workflows / "verify-upstream-has-not-changed.sh"
         self.build = self.workflows / "build.yml"

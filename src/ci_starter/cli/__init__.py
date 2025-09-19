@@ -34,8 +34,7 @@ def cli(
     context: Context,
     workdir: Path,
 ) -> None:
-    echo(f"ci-starter {version}!")
-
+    echo(f"ci-starter {version}")
     context.obj = workdir
 
 
@@ -44,7 +43,7 @@ def cli(
 def psr_config(workdir):
     logger.debug("Psr-config got workdir %s", workdir)
     try:
-        generate_semantic_release_config(workdir.project, workdir.config)
+        generate_semantic_release_config(workdir.project)
     except CiStarterError as err:
         logger.exception(err)
         exit(err.code)
