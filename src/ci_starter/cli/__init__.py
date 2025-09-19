@@ -1,12 +1,12 @@
+from importlib.metadata import entry_points
 from logging import getLogger
 from logging.config import dictConfig as configure_logging
 from pathlib import Path
 from sys import exit
 
-from click import Context, echo, group, option, pass_context, pass_obj, version_option
+from click import Context, group, option, pass_context, pass_obj, version_option
 from click import Path as ClickPath
 
-from .. import __version__ as version
 from .. import generate_helper_script, generate_semantic_release_config
 from ..errors import CiStarterError
 from ..logging_conf import logging_configuration
@@ -18,8 +18,10 @@ configure_logging(logging_configuration)
 
 logger = getLogger(__name__)
 
+entry_point = next(iter(entry_points().select(group="console_scripts")))
 
-@group()
+
+@group(name=entry_point.name)
 @version_option()
 @option(
     "-C",
@@ -34,7 +36,6 @@ def cli(
     context: Context,
     workdir: Path,
 ) -> None:
-    echo(f"ci-starter {version}")
     context.obj = workdir
 
 
