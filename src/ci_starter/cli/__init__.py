@@ -1,4 +1,3 @@
-from importlib.metadata import entry_points
 from logging import getLogger
 from logging.config import dictConfig as configure_logging
 from pathlib import Path
@@ -18,10 +17,10 @@ configure_logging(logging_configuration)
 
 logger = getLogger(__name__)
 
-entry_point = next(iter(entry_points().select(group="console_scripts")))
+entry_point_name = "ci-start"
 
 
-@group(name=entry_point.name)
+@group(name=entry_point_name)
 @version_option()
 @option(
     "-C",
