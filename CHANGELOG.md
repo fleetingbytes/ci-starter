@@ -2,6 +2,19 @@
 
 <!-- version list -->
 
+## v0.4.1 (2025-09-19)
+
+### Bug Fixes
+
+- AttributeError
+  ([`44a7bf4`](https://github.com/fleetingbytes/ci-starter/commit/44a7bf4889597e7def059f5e838932307b374beb))
+
+### Refactoring
+
+- Introduce contracts and base classes
+  ([`eeac570`](https://github.com/fleetingbytes/ci-starter/commit/eeac5700412b1c3a08e5793d219587b3e67638e8))
+
+
 ## v0.4.0 (2025-09-18)
 
 ### Chores
