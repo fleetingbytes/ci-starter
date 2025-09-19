@@ -14,12 +14,12 @@ from tests.e2e.constants import (
 )
 
 
+@mark.usefixtures("remote_url_not_set")
 def test_psr_config_creation_without_origin_url_set(cli_runner: CliRunner, test_project_path_str) -> None:
     result: Result = cli_runner.invoke(cli, ["-C", test_project_path_str, "psr-config"])
     assert result.exit_code == RemoteNotFoundError.code
 
 
-@mark.usefixtures("set_remote_url")
 def test_psr_config_creation_with_origin_url_set(cli_runner: CliRunner, test_project_path_str) -> None:
     result: Result = cli_runner.invoke(cli, ["-C", test_project_path_str, "psr-config"])
     assert result.exit_code == SUCCESSFUL_RETURN_CODE

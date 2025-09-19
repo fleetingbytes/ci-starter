@@ -3,6 +3,7 @@ from shlex import join, split
 from subprocess import run
 
 from click.testing import CliRunner
+from git import Remote, Repo
 from pytest import fixture
 from ruamel.yaml import YAML
 
@@ -60,23 +61,17 @@ def test_project_path_str(tmp_path) -> str:
     return str(expected_project_path)
 
 
-@fixture
+@fixture(autouse=True)
 def set_remote_url(test_project_path_str) -> None:
-    set_remote_cmd = split(
-        join(
-            (
-                "git",
-                "-C",
-                test_project_path_str,
-                "remote",
-                "add",
-                "origin",
-                f"git@github.com:username/{TEST_REPO_NAME}.git",
-            )
-        )
-    )
+    repo = Repo(test_project_path_str)
+    Remote.add(repo, "origin", f"git@github.com:username/{TEST_REPO_NAME}.git")
 
-    run(set_remote_cmd, check=True, capture_output=True, text=True)
+
+@fixture
+def remote_url_not_set(test_project_path_str) -> None:
+    repo = Repo(test_project_path_str)
+    remote = next(iter(repo.remotes))
+    Remote.remove(repo, remote.name)
 
 
 @fixture
