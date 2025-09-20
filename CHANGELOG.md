@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v0.4.3 (2025-09-20)
+
+### Bug Fixes
+
+- **docs**: Use new workflow name in readme
+  ([`585df52`](https://github.com/fleetingbytes/ci-starter/commit/585df52e6ccc4177b3b38a04e953723701261df1))
+
+
 ## v0.4.2 (2025-09-19)
 
 ### Bug Fixes
