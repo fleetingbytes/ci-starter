@@ -13,7 +13,8 @@ else:
     from importlib.resources import files
 
 
-def get_asset(path: Path) -> str:
+def get_asset(path: str) -> str:
+    path = Path(path)
     asset: Traversable = files(f"{__package__}.assets")
     for path_segment in path.parts:
         asset = asset.joinpath(path_segment)

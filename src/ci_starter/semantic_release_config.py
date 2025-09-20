@@ -10,8 +10,7 @@ from .placeholder import Placeholder
 class SemanticReleaseConfiguration(SemanticReleaseConfigurationBase):
     @staticmethod
     def get_configuration_toml_template() -> str:
-        asset_path = Path("toml/semantic-release.toml")
-        sr_config_asset: str = get_asset(asset_path)
+        sr_config_asset: str = get_asset("toml/semantic-release.toml")
         return sr_config_asset
 
     @staticmethod
