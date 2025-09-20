@@ -53,7 +53,7 @@ def psr_config(workdir):
 @option("-m", "--module_name")
 @option(
     "--workflow-file-name",
-    default="continuous_delivery.yml",
+    default="continuous-delivery.yml",
     type=ClickPath(writable=True, path_type=Path),
     callback=validate_workflow_file_name,
 )

@@ -18,10 +18,10 @@ Kickstarts the semantic release pipeline for your Python project on GitHub. It c
     - Create tests (CI/CD pipeline would fail if no tests are found)
     - Format and check everything with ruff
     - Set up a trusted publisher for your project on pypi.org:
-        - Workflow: `continuous_delivery.yml`
+        - Workflow: `continuous-delivery.yml`
         - Environment name: `pypi`
     - Set up a trusted publisher for your project on test.pypi.org:
-        - Workflow: `continuous_delivery.yml`
+        - Workflow: `continuous-delivery.yml`
         - Environment name: `testpypi`
     - Create a GitHub repository for your project
     - Add remote origin and its ssh address at your local clone
