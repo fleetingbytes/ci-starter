@@ -2,6 +2,19 @@
 
 <!-- version list -->
 
+## v0.4.4 (2025-09-20)
+
+### Chores
+
+- Update ruff
+  ([`4eac6cf`](https://github.com/fleetingbytes/ci-starter/commit/4eac6cf7142483a3c59dc37eb950174cf4175243))
+
+### Refactoring
+
+- Make get_asset accept strings
+  ([`b867453`](https://github.com/fleetingbytes/ci-starter/commit/b8674534c5deea7111f23d8703a651844d743ba7))
+
+
 ## v0.4.3 (2025-09-20)
 
 ### Bug Fixes
