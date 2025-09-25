@@ -38,6 +38,9 @@ select = [
     "PLR0913", # too-many-arguments
     "PLR0917", # too-many-positional-arguments
 ]
+"tests/dependencies/conftest.py" = [
+    "N811",    # constant-imported-as-non-constant
+]
 
 extend-safe-fixes = [
     "TC001", # typing-only-first-party-import

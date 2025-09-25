@@ -22,6 +22,7 @@ dependencies = [
     "importlib-resources>=5.10 ; python_full_version < '3.12'",
     "platformdirs>=4.4.0",
     "ruamel-yaml>=0.18.15",
+    "semver>=3.0.4",
     "tomli-w>=1.2.0",
 ]
 

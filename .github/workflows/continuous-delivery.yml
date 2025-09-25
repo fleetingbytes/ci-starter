@@ -27,12 +27,13 @@ jobs:
     name: Lint
     runs-on: ubuntu-latest
     steps:
-      - !action
+      - !step
         name: Setup | Checkout Repository
-        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8  # v5.0.0
+        uses: !action actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8  # v5.0.0
 
-      - name: Lint
-        uses: astral-sh/ruff-action@57714a7c8a2e59f32539362ba31877a1957dded1  # v3.5.1
+      - !step
+        name: Lint
+        uses: !action astral-sh/ruff-action@57714a7c8a2e59f32539362ba31877a1957dded1  # v3.5.1
 
 
   variables:
@@ -138,15 +139,17 @@ jobs:
       id-token: write
 
     steps:
-      - name: Setup | Download Build Artifacts
-        uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0  # v5.0.0
+      - !step
+        name: Setup | Download Build Artifacts
+        uses: !action actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0  # v5.0.0
         id: artifact-download
         with:
           name: ${{ inputs.distribution-artifacts-name }}
           path: ${{ inputs.distribution-artifacts-dir }}
 
-      - name: Publish Package Distributions to ${{ matrix.publish-data.registry }}
-        uses: pypa/gh-action-pypi-publish@ed0c53931b1dc9bd32cbe73a98c7f6766f8a527e  # v1.13.0
+      - !step
+        name: Publish Package Distributions to ${{ matrix.publish-data.registry }}
+        uses: !action pypa/gh-action-pypi-publish@ed0c53931b1dc9bd32cbe73a98c7f6766f8a527e  # v1.13.0
         with:
           packages-dir: ${{ inputs.distribution-artifacts-dir }}
           print-hash: true

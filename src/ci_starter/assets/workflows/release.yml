@@ -48,12 +48,12 @@ jobs:
       new-release-tag: ${{ steps.release.outputs.tag }}
 
     env:
-      UV_LOCKED: true
       UV_NO_MANAGED_PYTHON: true
 
     steps:
-      - name: Setup | Checkout Repository on Release Branch
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683  # v4.2.2
+      - !step
+        name: Setup | Checkout Repository on Release Branch
+        uses: !action actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683  # v4.2.2
         with:
           ref: ${{ github.ref_name }}
           fetch-depth: 0
@@ -61,13 +61,15 @@ jobs:
       - name: Setup | Force release branch to be at workflow sha
         run: git reset --hard ${{ github.sha }}
 
-      - name: Setup | Install Python
-        uses: actions/setup-python@e797f83bcb11b83ae66e0230d6156d7c80228e7c  # v6.0.0
+      - !step
+        name: Setup | Install Python
+        uses: !action actions/setup-python@e797f83bcb11b83ae66e0230d6156d7c80228e7c  # v6.0.0
         with:
           python-version-file: .python-version
 
-      - name: Setup | Install uv
-        uses: astral-sh/setup-uv@557e51de59eb14aaaba2ed9621916900a91d50c6  # v6.6.1
+      - !step
+        name: Setup | Install uv
+        uses: !action astral-sh/setup-uv@557e51de59eb14aaaba2ed9621916900a91d50c6  # v6.6.1
 
       - name: Setup | Install python-semantic-release
         run: uv tool install python-semantic-release
@@ -75,15 +77,17 @@ jobs:
       - name: Setup | Install Project
         run: uv sync
 
-      - name: Setup | Download Build Artifacts
-        uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0  # v5.0.0
+      - !step
+        name: Setup | Download Build Artifacts
+        uses: !action actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0  # v5.0.0
         id: artifact-download
         with:
           name: ${{ inputs.distribution-artifacts-name }}
           path: ${{ inputs.distribution-artifacts-dir }}
 
-      - name: Setup | Download Lock File Artifact
-        uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0  # v5.0.0
+      - !step
+        name: Setup | Download Lock File Artifact
+        uses: !action actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0  # v5.0.0
         with:
           name: ${{ inputs.lock-file-artifact }}
 
@@ -95,7 +99,6 @@ jobs:
         shell: bash
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          UV_LOCKED: false
         run: |
           ./.github/workflows/verify-upstream-has-not-changed.sh
           uv run -- semantic-release --config ${{ inputs.semantic-release-config-file }} --verbose --strict version --skip-build
