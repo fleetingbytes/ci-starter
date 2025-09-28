@@ -2,6 +2,47 @@
 
 <!-- version list -->
 
+## v0.5.0 (2025-09-28)
+
+### Chores
+
+- Update click
+  ([`af5aa99`](https://github.com/fleetingbytes/ci-starter/commit/af5aa99da7f812e52336c562505c9ebdba634886))
+
+### Continuous Integration
+
+- Really test tag and comment
+  ([`a4f49ce`](https://github.com/fleetingbytes/ci-starter/commit/a4f49ceb8515bb5952f530e56d7cb5e05291d52d))
+
+- Test tag and comment
+  ([`8b5b3fa`](https://github.com/fleetingbytes/ci-starter/commit/8b5b3fa27a5812310be56657daa4a78389786ea2))
+
+- Test tagging actions
+  ([`9b0baa2`](https://github.com/fleetingbytes/ci-starter/commit/9b0baa20eb4ad9b991efc61ab7b871fe3104e787))
+
+### Features
+
+- Add Step and Action objects for yaml parsing and dumping
+  ([`101a358`](https://github.com/fleetingbytes/ci-starter/commit/101a3585fb3d0598777eb36bdd72e2aee0cbed54))
+
+### Testing
+
+- Learn to use the ruamel.yaml dependency
+  ([`d000781`](https://github.com/fleetingbytes/ci-starter/commit/d0007817430805ff0905c40b0f5c5778442734d4))
+
+- Parse step, but don't use Action class
+  ([`fcf6f3b`](https://github.com/fleetingbytes/ci-starter/commit/fcf6f3bbb9ab0e83ed20dd17cf5ce72879f81d02))
+
+- Parse step, use Action class
+  ([`2fe4a3b`](https://github.com/fleetingbytes/ci-starter/commit/2fe4a3bf42fe70e76d523a9d88439e54f5845698))
+
+- Remove action tag with which github cannot deal
+  ([`de767e5`](https://github.com/fleetingbytes/ci-starter/commit/de767e520f0806a36f2f8280a5771d82338a5ab9))
+
+- Remove obsolete tests
+  ([`1c17f57`](https://github.com/fleetingbytes/ci-starter/commit/1c17f57344c9a0e6a19ada4db0de4eb5e7523dc0))
+
+
 ## v0.4.4 (2025-09-20)
 
 ### Chores
