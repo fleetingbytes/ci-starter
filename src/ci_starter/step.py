@@ -32,7 +32,7 @@ class Step:
 
     @classmethod
     def get_action_comment(cls, node: MappingNode) -> list[CommentToken | None]:
-        f = filter(lambda tupl: tupl[1].tag == "!action", node.value)
+        f = filter(lambda tupl: tupl[0].value == "uses", node.value)
         _, scalar_node = next(f)
         comments: list[CommentToken | None] = scalar_node.comment
         comment = Comment()
