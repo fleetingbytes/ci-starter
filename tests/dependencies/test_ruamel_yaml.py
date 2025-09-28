@@ -3,9 +3,7 @@ from textwrap import dedent
 
 from ruamel.yaml.comments import Comment, CommentedMap, CommentedSeq
 from ruamel.yaml.tokens import CommentToken
-from semver import VersionInfo
 
-from ci_starter.action import Action
 from ci_starter.asset_getter import get_asset
 from ci_starter.step import Step
 
@@ -119,79 +117,12 @@ def test_dump_commented_map(yaml_parser) -> None:
     assert actual.getvalue() == expected
 
 
-def test_parse_action(action_parser) -> None:
-    string = dedent("""\
-                    steps:
-                    - name: Step1
-                      uses: !action test_user/test_repo@0cafe  # v1.2.3
-                    """)
-    data = action_parser.load(string)
-
-    assert isinstance(data, CommentedMap)
-    assert isinstance(data["steps"], CommentedSeq)
-    assert isinstance(data["steps"][0], CommentedMap)
-    assert data["steps"][0].ca.items["uses"][2].value == "# v1.2.3\n"
-    assert isinstance(data["steps"][0]["uses"], Action)
-
-
-def test_dump_action(action_parser) -> None:
-    steps = {
-        "steps": [
-            {
-                "name": "Step1",
-                "uses": Action(
-                    user="test_user", repo="test_repo", commit="0cafe", version=VersionInfo(1, 2, 3)
-                ),
-            }
-        ],
-    }
-
-    # There no way how to make ruamel.yaml aware of the comment.
-    # You cannot pass the comment to the RoundtripRepresenter.represent_scalar method.
-    # That is why the comment is missing here:
-    expected = dedent("""\
-                      steps:
-                      - name: Step1
-                        uses: !action test_user/test_repo@0cafe
-                      """)
-    actual = StringIO()
-    action_parser.dump(steps, actual)
-
-    assert actual.getvalue() == expected
-
-    # It gets dumped as a commented map, but without the comment.
-    data = action_parser.load(actual.getvalue())
-    assert isinstance(data, CommentedMap)
-    assert isinstance(data["steps"], CommentedSeq)
-    assert isinstance(data["steps"][0], CommentedMap)
-    assert data["steps"][0].ca.items == {}
-    assert isinstance(data["steps"][0]["uses"], Action)
-
-
-def test_parse_action_roundtrip(action_parser) -> None:
-    string = dedent("""\
-                    steps:
-                    - name: Step1
-                      uses: !action test_user/test_repo@0cafe  # v1.2.3
-                    """)
-    data = action_parser.load(string)
-
-    actual = StringIO()
-    action_parser.dump(data, actual)
-    expected = string
-
-    assert actual.getvalue() == expected
-    # This means that the roundtrip works.
-    # It's just a pity that the comment of the action
-    # is saved in the comments of the whole Step1 map.
-
-
 def test_parse_step(step_parser) -> None:
     string = dedent("""\
                     steps:
                     - !step
                       name: Step1
-                      uses: !action test_user/test_repo@0cafe  # v1.2.3
+                      uses: test_user/test_repo@0cafe  # v1.2.3
                     """)
     data = step_parser.load(string)
 
@@ -205,7 +136,7 @@ def test_parse_step_roundtrip(step_parser) -> None:
                     steps:
                     - !step
                       name: Step1
-                      uses: !action test_user/test_repo@0cafe  # v1.2.3
+                      uses: test_user/test_repo@0cafe  # v1.2.3
                     """)
     data = step_parser.load(string)
 
