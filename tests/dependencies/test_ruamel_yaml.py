@@ -4,6 +4,7 @@ from textwrap import dedent
 from ruamel.yaml.comments import Comment, CommentedMap, CommentedSeq
 from ruamel.yaml.tokens import CommentToken
 
+from ci_starter.action import Action
 from ci_starter.asset_getter import get_asset
 from ci_starter.step import Step
 
@@ -126,9 +127,11 @@ def test_parse_step(step_parser) -> None:
                     """)
     data = step_parser.load(string)
 
-    assert isinstance(data["steps"][0], Step)
-    assert isinstance(data["steps"][0].yaml_tag, str)
-    assert data["steps"][0].yaml_tag == "!step"
+    step = data["steps"][0]
+    assert isinstance(step, Step)
+    assert isinstance(step.yaml_tag, str)
+    assert step.yaml_tag == "!step"
+    assert isinstance(step.uses, Action)
 
 
 def test_parse_step_roundtrip(step_parser) -> None:

@@ -1,3 +1,4 @@
+from copy import deepcopy
 from typing import ClassVar, Self
 
 from ruamel.yaml.comments import Comment, CommentedMap, comment_attrib
@@ -6,29 +7,37 @@ from ruamel.yaml.nodes import MappingNode
 from ruamel.yaml.representer import Representer
 from ruamel.yaml.tokens import CommentToken
 
-from .action import Action
+from ci_starter.action import Action
 
 
 class Step:
     yaml_tag: ClassVar[str] = "!step"
 
-    def __init__(self, name: str, uses: Action, comment: list[CommentToken | None]) -> None:
-        self.name = name
-        self.uses = uses
-        self.comment = comment
-        setattr(self, comment_attrib, self.comment)
+    def __init__(self, **kwargs) -> None:
+        self._kwargs = kwargs
+        normal_kwargs = {k: v for k, v in self._kwargs.items() if k not in {"comment", "uses"}}
+
+        for k, v in normal_kwargs.items():
+            setattr(self, k, v)
+
+        self.uses = Action.from_text(kwargs.get("uses"))
+        setattr(self, comment_attrib, kwargs.get("comment"))
+
         self.items = self.value.items
 
     @property
     def value(self) -> dict:
-        return {"name": self.name, "uses": self.uses}
+        result = deepcopy(self._kwargs)
+        result["uses"] = self.uses.to_text()
+        del result["comment"]
+        return result
 
     @classmethod
     def from_yaml(cls, constructor: Constructor, node: MappingNode) -> Self:
         comment = cls.get_action_comment(node)
-        data = CommentedMap()
-        constructor.construct_mapping(node, maptyp=data, deep=False)
-        return cls(**data, comment=comment)
+        commented_map = CommentedMap()
+        constructor.construct_mapping(node, maptyp=commented_map, deep=False)
+        return cls(**commented_map, comment=comment)
 
     @classmethod
     def get_action_comment(cls, node: MappingNode) -> list[CommentToken | None]:
