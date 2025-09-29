@@ -1,7 +1,6 @@
 from pytest import fixture
 from ruamel.yaml import YAML as Yaml
 
-from ci_starter.action import Action
 from ci_starter.step import Step
 
 
@@ -11,12 +10,6 @@ def yaml_parser() -> Yaml:
 
 
 @fixture
-def action_parser(yaml_parser) -> Yaml:
-    yaml_parser.register_class(Action)
+def step_parser(yaml_parser) -> Yaml:
+    yaml_parser.register_class(Step)
     return yaml_parser
-
-
-@fixture
-def step_parser(action_parser) -> Yaml:
-    action_parser.register_class(Step)
-    return action_parser
