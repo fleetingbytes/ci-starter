@@ -6,12 +6,15 @@ from ruamel.yaml.constructor import Constructor
 from ruamel.yaml.nodes import MappingNode
 from ruamel.yaml.representer import Representer
 from ruamel.yaml.tokens import CommentToken
+from semver import VersionInfo
 
 from ci_starter.action import Action
 
 
 class Step:
     yaml_tag: ClassVar[str] = "!step"
+    version_comment_start = "# v"
+    mysterious_comment_offset = 2
 
     def __init__(self, **kwargs) -> None:
         self._kwargs = kwargs
@@ -20,9 +23,45 @@ class Step:
         for k, v in normal_kwargs.items():
             setattr(self, k, v)
 
-        self.uses = Action.from_text(kwargs.get("uses"))
-        setattr(self, comment_attrib, kwargs.get("comment"))
+        comment: Comment = deepcopy(kwargs.get("comment"))
+        setattr(self, comment_attrib, comment)
 
+        version_string = self.comment_string
+        version = VersionInfo.parse(version_string)
+        self.uses = Action.from_text(kwargs.get("uses"), version=version)
+
+    @property
+    def comment_string(self) -> str:
+        string = self.comment_token.value.strip().removeprefix(self.version_comment_start)
+        return string
+
+    @comment_string.setter
+    def comment_string(self, value: VersionInfo) -> None:
+        comment = getattr(self, comment_attrib)
+        comment._items["uses"][2].value = f"{self.version_comment_start}{value}\n"
+        comment._items["uses"][2].column = self.original_comment_column - self.mysterious_comment_offset
+
+    @property
+    def original_comment_column(self) -> int:
+        original_comment = self._kwargs.get("comment")
+        column = original_comment._items["uses"][2].column
+        return column
+
+    @property
+    def comment_token(self) -> CommentToken:
+        comment = getattr(self, comment_attrib)
+        token: CommentToken = comment.items["uses"][2]
+        return token
+
+    @property
+    def uses(self) -> Action:
+        return self._uses
+
+    @uses.setter
+    def uses(self, action: Action) -> None:
+        assert isinstance(action, Action), "uses must be set with an Action instance"
+        self._uses = action
+        self.comment_string = action.version
         self.items = self.value.items
 
     @property
@@ -52,4 +91,9 @@ class Step:
     def to_yaml(cls, representer: Representer, node: Self) -> MappingNode:
         tag = cls.yaml_tag
         result = representer.represent_mapping(tag, node)
+        return result
+
+    def __repr__(self) -> str:
+        attrs = ", ".join((f"{k}={v}" for k, v in self.value.items()))
+        result = f"{self.__class__.__name__}({attrs})"
         return result
