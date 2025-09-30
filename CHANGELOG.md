@@ -2,6 +2,29 @@
 
 <!-- version list -->
 
+## v0.6.0 (2025-09-30)
+
+### Bug Fixes
+
+- Deal with mystery offset only when setting action manually
+  ([`abaa813`](https://github.com/fleetingbytes/ci-starter/commit/abaa813b57704096bc9d1de2c06d4fb41e5e2dd9))
+
+### Code Style
+
+- Update ruff rules
+  ([`20da425`](https://github.com/fleetingbytes/ci-starter/commit/20da425d79f9aec1ec887ec44c2be1eac531da07))
+
+### Features
+
+- Changeable Action in Step
+  ([`61d1985`](https://github.com/fleetingbytes/ci-starter/commit/61d19852ea1e5f2a4103862a0e29cf761b29d50c))
+
+### Refactoring
+
+- Remove obsolete code
+  ([`5dda06d`](https://github.com/fleetingbytes/ci-starter/commit/5dda06d68d2acd0d671a335e8338376d8c6d928b))
+
+
 ## v0.5.0 (2025-09-28)
 
 ### Chores
