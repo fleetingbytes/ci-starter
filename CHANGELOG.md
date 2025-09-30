@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v0.6.1 (2025-09-30)
+
+### Bug Fixes
+
+- Shift comment start if lenght of action text changes
+  ([`d0e218f`](https://github.com/fleetingbytes/ci-starter/commit/d0e218fab5fc36e08bbceea85214c3b6e8621b5f))
+
+
 ## v0.6.0 (2025-09-30)
 
 ### Bug Fixes
