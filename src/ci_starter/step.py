@@ -1,3 +1,4 @@
+from collections.abc import Callable
 from copy import deepcopy
 from typing import ClassVar, Self
 
@@ -30,8 +31,6 @@ class Step:
 
         action_text = kwargs.get("uses")
         self._uses = Action.from_text(action_text, version=version)
-
-        self.items = self.value.items
 
     @property
     def comment_string(self) -> str:
@@ -69,8 +68,6 @@ class Step:
         self.comment_start_column += shift_of_comment_start_column
         self.comment_string = f"{self.version_comment_start}{action.version}"
 
-        self.items = self.value.items
-
     @property
     def comment_start_column(self) -> int:
         comment = self.get_comment_object()
@@ -83,11 +80,15 @@ class Step:
         comment._items["uses"][2].column = value
 
     @property
-    def value(self) -> dict:
+    def dict(self) -> dict:
         result = deepcopy(self._kwargs)
         result["uses"] = self.uses.to_text()
         del result["comment"]
         return result
+
+    @property
+    def items(self) -> Callable:
+        return self.dict.items
 
     @classmethod
     def from_yaml(cls, constructor: Constructor, node: MappingNode) -> Self:
@@ -112,6 +113,6 @@ class Step:
         return result
 
     def __repr__(self) -> str:
-        attrs = ", ".join((f"{k}={v}" for k, v in self.value.items()))
+        attrs = ", ".join((f"{k}={v}" for k, v in self.dict.items()))
         result = f"{self.__class__.__name__}({attrs})"
         return result
