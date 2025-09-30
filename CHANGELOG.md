@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v0.6.2 (2025-09-30)
+
+### Refactoring
+
+- Remove the need of manually updating self.items
+  ([`688f832`](https://github.com/fleetingbytes/ci-starter/commit/688f8325609cc5fe426f84b526cbf014307fb388))
+
+
 ## v0.6.1 (2025-09-30)
 
 ### Bug Fixes
