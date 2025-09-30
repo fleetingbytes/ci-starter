@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v0.6.3 (2025-09-30)
+
+### Refactoring
+
+- Simplify init, improve readability
+  ([`f861b20`](https://github.com/fleetingbytes/ci-starter/commit/f861b20ac077e1e9d471300efd650e7dd37ab797))
+
+
 ## v0.6.2 (2025-09-30)
 
 ### Refactoring

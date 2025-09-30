@@ -1,6 +1,6 @@
 [project]
 name = "ci-starter"
-version = "0.6.2"
+version = "0.6.3"
 description = "Kickstarts the semantic release pipeline for your Python project"
 readme = "README.md"
 authors = [
