@@ -1,5 +1,4 @@
 from collections.abc import Callable
-from copy import deepcopy
 from typing import ClassVar, Self
 
 from ruamel.yaml.comments import Comment, CommentedMap, comment_attrib
@@ -17,20 +16,17 @@ class Step:
     version_comment_start = "# v"
 
     def __init__(self, **kwargs) -> None:
-        self._kwargs = kwargs
-        normal_kwargs = {k: v for k, v in self._kwargs.items() if k not in {"comment", "uses"}}
-
-        for k, v in normal_kwargs.items():
-            setattr(self, k, v)
-
-        comment: Comment = deepcopy(kwargs.get("comment"))
+        comment = kwargs.pop("comment")
         setattr(self, comment_attrib, comment)
 
+        action_text = kwargs.pop("uses")
         version_string = self.comment_string.removeprefix(self.version_comment_start)
         version = VersionInfo.parse(version_string)
-
-        action_text = kwargs.get("uses")
         self._uses = Action.from_text(action_text, version=version)
+
+        for k, v in kwargs.items():
+            setattr(self, k, v)
+        self._keys = kwargs.keys()
 
     @property
     def comment_string(self) -> str:
@@ -60,8 +56,8 @@ class Step:
     def uses(self, action: Action) -> None:
         assert isinstance(action, Action), "uses must be set with an Action instance"
 
-        previous_action_text_length = len(self.uses)
         current_action_text_length = len(action)
+        previous_action_text_length = len(self.uses)
         shift_of_comment_start_column = current_action_text_length - previous_action_text_length
 
         self._uses = action
@@ -81,9 +77,7 @@ class Step:
 
     @property
     def dict(self) -> dict:
-        result = deepcopy(self._kwargs)
-        result["uses"] = self.uses.to_text()
-        del result["comment"]
+        result = {key: getattr(self, key) for key in self._keys} | {"uses": self.uses.to_text()}
         return result
 
     @property
