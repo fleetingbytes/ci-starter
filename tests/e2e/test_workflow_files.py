@@ -1,13 +1,11 @@
 from pathlib import Path
 
 from click.testing import CliRunner, Result
-from pytest import mark
 
 from ci_starter.cli import cli
 from tests.e2e.constants import SUCCESSFUL_RETURN_CODE
 
 
-@mark.usefixtures("set_remote_url")
 def test_helper_script_created(
     cli_runner: CliRunner, test_project_path_str: str, helper_script: tuple[str, Path]
 ) -> None:
