@@ -14,7 +14,6 @@ from ci_starter.action import Action
 class Step:
     yaml_tag: ClassVar[str] = "!step"
     version_comment_start = "# v"
-    mysterious_comment_offset = 2
 
     def __init__(self, **kwargs) -> None:
         self._kwargs = kwargs
@@ -26,30 +25,31 @@ class Step:
         comment: Comment = deepcopy(kwargs.get("comment"))
         setattr(self, comment_attrib, comment)
 
-        version_string = self.comment_string
+        version_string = self.comment_string.removeprefix(self.version_comment_start)
         version = VersionInfo.parse(version_string)
-        self.uses = Action.from_text(kwargs.get("uses"), version=version)
+
+        action_text = kwargs.get("uses")
+        self._uses = Action.from_text(action_text, version=version)
+
+        self.items = self.value.items
 
     @property
     def comment_string(self) -> str:
-        string = self.comment_token.value.strip().removeprefix(self.version_comment_start)
+        string = self.comment_token.value.strip()
         return string
 
     @comment_string.setter
-    def comment_string(self, value: VersionInfo) -> None:
-        comment = getattr(self, comment_attrib)
-        comment._items["uses"][2].value = f"{self.version_comment_start}{value}\n"
-        comment._items["uses"][2].column = self.original_comment_column - self.mysterious_comment_offset
+    def comment_string(self, new_string: str) -> None:
+        comment = self.get_comment_object()
+        comment._items["uses"][2].value = f"{new_string}\n"
 
-    @property
-    def original_comment_column(self) -> int:
-        original_comment = self._kwargs.get("comment")
-        column = original_comment._items["uses"][2].column
-        return column
+    def get_comment_object(self) -> Comment:
+        comment = getattr(self, comment_attrib)
+        return comment
 
     @property
     def comment_token(self) -> CommentToken:
-        comment = getattr(self, comment_attrib)
+        comment = self.get_comment_object()
         token: CommentToken = comment.items["uses"][2]
         return token
 
@@ -60,10 +60,27 @@ class Step:
     @uses.setter
     def uses(self, action: Action) -> None:
         assert isinstance(action, Action), "uses must be set with an Action instance"
+
+        previous_action_text_length = len(self.uses)
+        current_action_text_length = len(action)
+        shift_of_comment_start_column = current_action_text_length - previous_action_text_length
+
         self._uses = action
-        if not action.is_from_text:
-            self.comment_string = action.version
+        self.comment_start_column += shift_of_comment_start_column
+        self.comment_string = f"{self.version_comment_start}{action.version}"
+
         self.items = self.value.items
+
+    @property
+    def comment_start_column(self) -> int:
+        comment = self.get_comment_object()
+        column: int = comment._items["uses"][2].column
+        return column
+
+    @comment_start_column.setter
+    def comment_start_column(self, value) -> None:
+        comment = self.get_comment_object()
+        comment._items["uses"][2].column = value
 
     @property
     def value(self) -> dict:

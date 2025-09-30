@@ -14,7 +14,6 @@ class Action:
         self.repo: str = repo
         self.commit: str = commit
         self.version: VersionInfo = version
-        self.is_from_text = False
 
     def to_text(self):
         text = f"{self.user}/{self.repo}@{self.commit}"
@@ -27,7 +26,6 @@ class Action:
             raise ActionNotParsableError(text)
 
         action = cls(**match.groupdict(), version=version)
-        action.is_from_text = True
 
         return action
 
@@ -37,3 +35,6 @@ class Action:
             f"commit={self.commit}, version={self.version})"
         )
         return string
+
+    def __len__(self) -> int:
+        return len(self.to_text())

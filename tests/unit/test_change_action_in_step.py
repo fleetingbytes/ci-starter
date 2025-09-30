@@ -6,7 +6,7 @@ from semver import VersionInfo
 from ci_starter.action import Action
 
 
-def test_change_action_in_step_comment_in_same_column(step_parser) -> None:
+def test_change_action_in_step_and_shift_comment_column(step_parser) -> None:
     string = dedent("""\
                     steps:
                     - !step
