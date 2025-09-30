@@ -61,7 +61,8 @@ class Step:
     def uses(self, action: Action) -> None:
         assert isinstance(action, Action), "uses must be set with an Action instance"
         self._uses = action
-        self.comment_string = action.version
+        if not action.is_from_text:
+            self.comment_string = action.version
         self.items = self.value.items
 
     @property
