@@ -1,3 +1,4 @@
+from collections.abc import Mapping
 from io import StringIO
 from textwrap import dedent
 
@@ -7,6 +8,14 @@ from ruamel.yaml.tokens import CommentToken
 from ci_starter.action import Action
 from ci_starter.asset_getter import get_asset
 from ci_starter.step import Step
+
+
+def test_mapping_subclass() -> None:
+    assert issubclass(CommentedMap, Mapping)
+
+
+def test_list_subclass() -> None:
+    assert issubclass(CommentedSeq, list)
 
 
 def test_parse_string_to_yaml(yaml_parser) -> None:
