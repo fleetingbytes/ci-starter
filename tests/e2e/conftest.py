@@ -86,14 +86,14 @@ def helper_script(test_project_workflows_path) -> str:
     return script, path
 
 
-def to_yaml(s: str) -> Yaml:
+def to_yaml(s: str) -> tuple[dict, Path]:
     yaml = Yaml()
     yaml.load(s)
     return yaml
 
 
 @fixture
-def build_workflow(test_project_workflows_path) -> Yaml:
+def build_workflow(test_project_workflows_path) -> tuple[dict, Path]:
     workflow: str = get_asset(BUILD_WORKFLOW_ASSET_PATH)
     yaml = to_yaml(workflow)
     path = test_project_workflows_path / BUILD_WORKFLOW_FILE_NAME
@@ -101,7 +101,7 @@ def build_workflow(test_project_workflows_path) -> Yaml:
 
 
 @fixture
-def test_e2e_workflow(test_project_workflows_path) -> Yaml:
+def test_e2e_workflow(test_project_workflows_path) -> tuple[dict, Path]:
     workflow: str = get_asset(TEST_E2E_WORKFLOW_ASSET_PATH)
     yaml = to_yaml(workflow)
     path = test_project_workflows_path / TEST_E2E_WORKFLOW_FILE_NAME
@@ -109,7 +109,7 @@ def test_e2e_workflow(test_project_workflows_path) -> Yaml:
 
 
 @fixture
-def release_workflow(test_project_workflows_path) -> Yaml:
+def release_workflow(test_project_workflows_path) -> tuple[dict, Path]:
     workflow: str = get_asset(RELEASE_WORKFLOW_ASSET_PATH)
     yaml = to_yaml(workflow)
     path = test_project_workflows_path / RELEASE_WORKFLOW_FILE_NAME
@@ -117,7 +117,7 @@ def release_workflow(test_project_workflows_path) -> Yaml:
 
 
 @fixture
-def base_workflow(test_project_workflows_path) -> Yaml:
+def base_workflow(test_project_workflows_path) -> tuple[dict, Path]:
     workflow: str = get_asset(BASE_WORKFLOW_ASSET_PATH)
     yaml = to_yaml(workflow)
     path = test_project_workflows_path / BASE_WORKFLOW_FILE_NAME
