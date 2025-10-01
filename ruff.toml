@@ -41,6 +41,9 @@ select = [
 "src/ci_starter/utils.py" = [
     "N811",    # constant-imported-as-non-constant
 ]
+"tests/**/conftest.py" = [
+    "N811",    # constant-imported-as-non-constant
+]
 
 extend-safe-fixes = [
     "TC001", # typing-only-first-party-import
