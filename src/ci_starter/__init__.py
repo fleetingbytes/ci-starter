@@ -44,6 +44,6 @@ def generate_base_workflow(**kwargs: Mapping[str, str]) -> dict:
     yaml = from_yaml(workflow)
 
     env_dict = {k.upper(): v for k, v in kwargs.items()}
-    yaml["env"] = env_dict
+    yaml["env"].update(env_dict)
 
     return yaml
