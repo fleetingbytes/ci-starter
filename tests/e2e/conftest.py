@@ -15,11 +15,11 @@ from ci_starter.constants import (
     HELPER_SCRIPT_FILE_NAME,
     RELEASE_WORKFLOW_ASSET_PATH,
     RELEASE_WORKFLOW_FILE_NAME,
+    TEST_E2E_WORKFLOW_ASSET_PATH,
+    TEST_E2E_WORKFLOW_FILE_NAME,
 )
 from ci_starter.utils import from_yaml
 from tests.e2e.constants import (
-    TEST_E2E_WORKFLOW_ASSET_PATH,
-    TEST_E2E_WORKFLOW_FILE_NAME,
     TEST_PROJECT_DIR_NAME,
     TEST_REPO_NAME,
     TEST_REPO_PATH,
