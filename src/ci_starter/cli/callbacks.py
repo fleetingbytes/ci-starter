@@ -6,6 +6,7 @@ from tomllib import load
 from click import Context, Parameter
 
 from ci_starter.constants import (
+    BASE_WORKFLOW_FILE_NAME,
     BUILD_WORKFLOW_FILE_NAME,
     GITHUB_WORKFLOWS_DIR,
     HELPER_SCRIPT_FILE_NAME,
@@ -19,6 +20,7 @@ class WorkDir:
     project: Path
     pyproject_toml: Path = field(init=False)
     workflows: Path = field(init=False)
+    base_workflow: Path = field(init=False)
     helper_script: Path = field(init=False)
     build: Path = field(init=False)
     release: Path = field(init=False)
@@ -27,6 +29,7 @@ class WorkDir:
     def __post_init__(self):
         self.pyproject_toml = self.project / "pyproject.toml"
         self.workflows = self.project / GITHUB_WORKFLOWS_DIR
+        self.base_workflow = self.workflows / BASE_WORKFLOW_FILE_NAME
         self.helper_script = self.workflows / HELPER_SCRIPT_FILE_NAME
         self.build = self.workflows / BUILD_WORKFLOW_FILE_NAME
         self.release = self.workflows / RELEASE_WORKFLOW_FILE_NAME
