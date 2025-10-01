@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v0.8.1 (2025-10-01)
+
+### Refactoring
+
+- Use constants in WorkDir class
+  ([`a4759be`](https://github.com/fleetingbytes/ci-starter/commit/a4759be9516647f94d78e5b6a1598f4e23d8ad4e))
+
+
 ## v0.8.0 (2025-10-01)
 
 ### Features
