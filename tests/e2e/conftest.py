@@ -6,19 +6,9 @@ from click.testing import CliRunner
 from git import Remote, Repo
 from pytest import fixture
 
-from ci_starter.asset_getter import get_asset
 from ci_starter.constants import (
-    BUILD_WORKFLOW_ASSET_PATH,
-    BUILD_WORKFLOW_FILE_NAME,
     GITHUB_WORKFLOWS_DIR,
-    HELPER_SCRIPT_ASSET_PATH,
-    HELPER_SCRIPT_FILE_NAME,
-    RELEASE_WORKFLOW_ASSET_PATH,
-    RELEASE_WORKFLOW_FILE_NAME,
-    TEST_E2E_WORKFLOW_ASSET_PATH,
-    TEST_E2E_WORKFLOW_FILE_NAME,
 )
-from ci_starter.utils import from_yaml
 from tests.e2e.constants import (
     TEST_PROJECT_DIR_NAME,
     TEST_REPO_NAME,
@@ -77,34 +67,3 @@ def remote_url_not_set(test_project_path_str) -> None:
 @fixture
 def test_project_workflows_path(test_project_path_str) -> Path:
     return Path(test_project_path_str, GITHUB_WORKFLOWS_DIR)
-
-
-@fixture
-def helper_script(test_project_workflows_path) -> str:
-    script: str = get_asset(HELPER_SCRIPT_ASSET_PATH)
-    path = test_project_workflows_path / HELPER_SCRIPT_FILE_NAME
-    return script, path
-
-
-@fixture
-def generated_build_workflow(test_project_workflows_path) -> dict:
-    workflow: str = get_asset(BUILD_WORKFLOW_ASSET_PATH)
-    yaml = from_yaml(workflow)
-    path = test_project_workflows_path / BUILD_WORKFLOW_FILE_NAME
-    return yaml, path
-
-
-@fixture
-def generated_test_e2e_workflow(test_project_workflows_path) -> dict:
-    workflow: str = get_asset(TEST_E2E_WORKFLOW_ASSET_PATH)
-    yaml = from_yaml(workflow)
-    path = test_project_workflows_path / TEST_E2E_WORKFLOW_FILE_NAME
-    return yaml, path
-
-
-@fixture
-def generated_release_workflow(test_project_workflows_path) -> dict:
-    workflow: str = get_asset(RELEASE_WORKFLOW_ASSET_PATH)
-    yaml = from_yaml(workflow)
-    path = test_project_workflows_path / RELEASE_WORKFLOW_FILE_NAME
-    return yaml, path

@@ -6,9 +6,17 @@ from sys import exit
 from click import Context, group, option, pass_context, pass_obj, version_option
 from click import Path as ClickPath
 
-from .. import generate_helper_script, generate_semantic_release_config
+from .. import (
+    generate_base_workflow,
+    generate_helper_script,
+    generate_semantic_release_config,
+)
+from .. import (
+    generate_reusable_workflow as generate_reusable_workflow,
+)
 from ..errors import CiStarterError
 from ..logging_conf import logging_configuration
+from ..utils import dump
 from .callbacks import WorkDir as WorkDir
 from .callbacks import set_module_name, set_workdir
 from .validations import validate_test_group, validate_workflow_file_name
@@ -80,3 +88,8 @@ def workflows(
     with workdir.helper_script.open("w", encoding="utf-8") as script_file:
         script: str = generate_helper_script()
         script_file.write(script)
+
+    workdir.base_workflow.parent.mkdir(parents=True, exist_ok=True)
+    with workdir.base_workflow.open("w", encoding="utf-8") as base_workflow:
+        data = generate_base_workflow()
+        dump(data, base_workflow)
