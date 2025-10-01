@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v0.8.2 (2025-10-01)
+
+### Refactoring
+
+- Generate_helper_script now returns a str
+  ([`29f3bba`](https://github.com/fleetingbytes/ci-starter/commit/29f3bbaef2b28fce8c779e52965c7c5060160803))
+
+
 ## v0.8.1 (2025-10-01)
 
 ### Refactoring
