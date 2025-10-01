@@ -10,12 +10,10 @@ permissions:
 
 
 env:
-  # Configurable by CLI
   PACKAGE_NAME: "ci-starter"
   DISTRIBUTION_FILE_INCIPIT: "ci_starter"
   TEST_DEPENDENCY_GROUP: "test"
   RUN_TEST_COMMAND: "uv run -- pytest --verbose"
-  # Not configurable by CLI
   SEMANTIC_RELEASE_CONFIG_FILE: "./semantic-release.toml"
   DISTRIBUTION_ARTIFACTS_NAME: "dist"
   DISTRIBUTION_ARTIFACTS_DIR: "dist"
