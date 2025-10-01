@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v0.7.1 (2025-10-01)
+
+### Bug Fixes
+
+- Update env instead of overwriting it
+  ([`d8147f1`](https://github.com/fleetingbytes/ci-starter/commit/d8147f1f4b76194b9305acf0d92a6cc4a6a153f9))
+
+
 ## v0.7.0 (2025-10-01)
 
 ### Bug Fixes
