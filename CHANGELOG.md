@@ -2,6 +2,22 @@
 
 <!-- version list -->
 
+## v0.8.0 (2025-10-01)
+
+### Features
+
+- Generate reusable workflow
+  ([`1838c69`](https://github.com/fleetingbytes/ci-starter/commit/1838c69075edf9c62fd0e626a7c2a1cea2a3bd87))
+
+### Testing
+
+- Add dependency tests
+  ([`4cec28b`](https://github.com/fleetingbytes/ci-starter/commit/4cec28bbb9d817b7bcb0270044fdeb88045ab1e8))
+
+- Add tests of reusable workflows
+  ([`e086ea2`](https://github.com/fleetingbytes/ci-starter/commit/e086ea2efd719df484b20216be88d167a7eab25d))
+
+
 ## v0.7.1 (2025-10-01)
 
 ### Bug Fixes
