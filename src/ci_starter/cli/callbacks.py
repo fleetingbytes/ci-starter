@@ -5,6 +5,14 @@ from tomllib import load
 
 from click import Context, Parameter
 
+from ci_starter.constants import (
+    BUILD_WORKFLOW_FILE_NAME,
+    GITHUB_WORKFLOWS_DIR,
+    HELPER_SCRIPT_FILE_NAME,
+    RELEASE_WORKFLOW_FILE_NAME,
+    TEST_E2E_WORKFLOW_FILE_NAME,
+)
+
 
 @dataclass
 class WorkDir:
@@ -18,11 +26,11 @@ class WorkDir:
 
     def __post_init__(self):
         self.pyproject_toml = self.project / "pyproject.toml"
-        self.workflows = self.project / ".github" / "workflows"
-        self.helper_script = self.workflows / "verify-upstream-has-not-changed.sh"
-        self.build = self.workflows / "build.yml"
-        self.release = self.workflows / "release.yml"
-        self.test_e2e = self.workflows / "test-e2e.yml"
+        self.workflows = self.project / GITHUB_WORKFLOWS_DIR
+        self.helper_script = self.workflows / HELPER_SCRIPT_FILE_NAME
+        self.build = self.workflows / BUILD_WORKFLOW_FILE_NAME
+        self.release = self.workflows / RELEASE_WORKFLOW_FILE_NAME
+        self.test_e2e = self.workflows / TEST_E2E_WORKFLOW_FILE_NAME
 
 
 def set_workdir(ctx: Context, _param: Parameter, path: Path) -> WorkDir:
