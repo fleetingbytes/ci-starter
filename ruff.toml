@@ -38,7 +38,7 @@ select = [
     "PLR0913", # too-many-arguments
     "PLR0917", # too-many-positional-arguments
 ]
-"tests/**/conftest.py" = [
+"src/ci_starter/utils.py" = [
     "N811",    # constant-imported-as-non-constant
 ]
 

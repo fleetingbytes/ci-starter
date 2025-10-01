@@ -5,12 +5,9 @@ from subprocess import run
 from click.testing import CliRunner
 from git import Remote, Repo
 from pytest import fixture
-from ruamel.yaml import YAML as Yaml
 
 from ci_starter.asset_getter import get_asset
-from tests.e2e.constants import (
-    BASE_WORKFLOW_ASSET_PATH,
-    BASE_WORKFLOW_FILE_NAME,
+from ci_starter.constants import (
     BUILD_WORKFLOW_ASSET_PATH,
     BUILD_WORKFLOW_FILE_NAME,
     GITHUB_WORKFLOWS_DIR,
@@ -18,6 +15,9 @@ from tests.e2e.constants import (
     HELPER_SCRIPT_FILE_NAME,
     RELEASE_WORKFLOW_ASSET_PATH,
     RELEASE_WORKFLOW_FILE_NAME,
+)
+from ci_starter.utils import from_yaml
+from tests.e2e.constants import (
     TEST_E2E_WORKFLOW_ASSET_PATH,
     TEST_E2E_WORKFLOW_FILE_NAME,
     TEST_PROJECT_DIR_NAME,
@@ -86,39 +86,25 @@ def helper_script(test_project_workflows_path) -> str:
     return script, path
 
 
-def to_yaml(s: str) -> tuple[dict, Path]:
-    yaml = Yaml()
-    yaml.load(s)
-    return yaml
-
-
 @fixture
-def build_workflow(test_project_workflows_path) -> tuple[dict, Path]:
+def generated_build_workflow(test_project_workflows_path) -> dict:
     workflow: str = get_asset(BUILD_WORKFLOW_ASSET_PATH)
-    yaml = to_yaml(workflow)
+    yaml = from_yaml(workflow)
     path = test_project_workflows_path / BUILD_WORKFLOW_FILE_NAME
     return yaml, path
 
 
 @fixture
-def test_e2e_workflow(test_project_workflows_path) -> tuple[dict, Path]:
+def generated_test_e2e_workflow(test_project_workflows_path) -> dict:
     workflow: str = get_asset(TEST_E2E_WORKFLOW_ASSET_PATH)
-    yaml = to_yaml(workflow)
+    yaml = from_yaml(workflow)
     path = test_project_workflows_path / TEST_E2E_WORKFLOW_FILE_NAME
     return yaml, path
 
 
 @fixture
-def release_workflow(test_project_workflows_path) -> tuple[dict, Path]:
+def generated_release_workflow(test_project_workflows_path) -> dict:
     workflow: str = get_asset(RELEASE_WORKFLOW_ASSET_PATH)
-    yaml = to_yaml(workflow)
+    yaml = from_yaml(workflow)
     path = test_project_workflows_path / RELEASE_WORKFLOW_FILE_NAME
-    return yaml, path
-
-
-@fixture
-def base_workflow(test_project_workflows_path) -> tuple[dict, Path]:
-    workflow: str = get_asset(BASE_WORKFLOW_ASSET_PATH)
-    yaml = to_yaml(workflow)
-    path = test_project_workflows_path / BASE_WORKFLOW_FILE_NAME
     return yaml, path
