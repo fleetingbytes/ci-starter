@@ -19,11 +19,14 @@ class SemanticReleaseConfiguration(SemanticReleaseConfigurationBase):
             s = s.replace(placeholder.placeholder, placeholder.value)
         return s
 
-    def __init__(self, repo_dir: Path, repo_name: str, distribution_artifacts_dir: str) -> None:
+    def __init__(
+        self, repo_dir: Path, lockfile_artifact: str, repo_name: str, distribution_artifacts_dir: str
+    ) -> None:
         self._repo_dir: Path = repo_dir
 
         toml_template: str = self.get_configuration_toml_template()
         placeholders: Iterable[Placeholder] = (
+            Placeholder("lockfile artifact", lockfile_artifact),
             Placeholder("repo name", repo_name),
             Placeholder("distribution artifacts dir", distribution_artifacts_dir),
         )

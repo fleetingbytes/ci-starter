@@ -2,7 +2,7 @@
 assets = []
 build_command = """
     uv lock --upgrade-package "$PACKAGE_NAME"
-    git add uv.lock
+    git add PLACEHOLDER_LOCKFILE_ARTIFACT
     uv build
 """
 build_command_env = []

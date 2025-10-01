@@ -4,7 +4,7 @@ from pathlib import Path
 
 from .asset_getter import get_asset
 from .git_helpers import get_repo_name
-from .presets import DISTRIBUTION_ARTIFACTS_DIR
+from .presets import DISTRIBUTION_ARTIFACTS_DIR, LOCKFILE_ARTIFACT
 from .semantic_release_config import SemanticReleaseConfiguration
 
 __version__ = get_version(__package__)
@@ -15,7 +15,9 @@ logger = getLogger(__name__)
 def generate_semantic_release_config(project_repo_path: Path) -> None:
     repo_name = get_repo_name(project_repo_path)
 
-    config = SemanticReleaseConfiguration(project_repo_path, repo_name, DISTRIBUTION_ARTIFACTS_DIR)
+    config = SemanticReleaseConfiguration(
+        project_repo_path, LOCKFILE_ARTIFACT, repo_name, DISTRIBUTION_ARTIFACTS_DIR
+    )
     config.write()
 
 

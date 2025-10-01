@@ -2,7 +2,7 @@ from pathlib import Path
 
 DISTRIBUTION_ARTIFACTS_DIR = "dist"
 DISTRIBUTION_ARTIFACTS_NAME = DISTRIBUTION_ARTIFACTS_DIR
-LOCK_FILE_ARTIFACT = "uv.lock"
+LOCKFILE_ARTIFACT = "uv.lock"
 SEMANTIC_RELEASE_CONFIG_FILE = "semantic-release.toml"
 WORKFLOWS_DIR = Path(".github", "workflows")
 ENCODING = "utf-8"
