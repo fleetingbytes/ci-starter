@@ -2,6 +2,63 @@
 
 <!-- version list -->
 
+## v0.7.0 (2025-10-01)
+
+### Bug Fixes
+
+- Replace hard-coded 'uv.lock' in 'semantic-release.toml' with a placeholder bound to the preset
+  LOCKFILE_ARTIFACT
+  ([`9897bce`](https://github.com/fleetingbytes/ci-starter/commit/9897bcea9cf9a745a3db26d71e8c67d88239a867))
+
+- Return object of from_yaml
+  ([`8fb6480`](https://github.com/fleetingbytes/ci-starter/commit/8fb6480c4460a03f9f9f97c8ae0139ddb8f8760c))
+
+### Code Style
+
+- Update ruff rules
+  ([`14d31a5`](https://github.com/fleetingbytes/ci-starter/commit/14d31a5620902676191b321203f5748896d50875))
+
+- YAML -> Yaml
+  ([`1d9266b`](https://github.com/fleetingbytes/ci-starter/commit/1d9266b1d77372c5227e3c04aba4f353e1daabbe))
+
+### Continuous Integration
+
+- Correct comment
+  ([`a08def2`](https://github.com/fleetingbytes/ci-starter/commit/a08def23d1319298a02893073b9d57273413099a))
+
+- Remove redundant comments
+  ([`caeb8c1`](https://github.com/fleetingbytes/ci-starter/commit/caeb8c1c673ad638ee9b8c8546060cb8715ee64e))
+
+- **fix**: Typehints
+  ([`a4f7a75`](https://github.com/fleetingbytes/ci-starter/commit/a4f7a753987d225a5a7ee1774f696fd7595925d6))
+
+### Documentation
+
+- Create technical-decisions.md
+  ([`f3146a5`](https://github.com/fleetingbytes/ci-starter/commit/f3146a51b5540dbcc43fa32dbfa0ed869ecb6eb7))
+
+### Features
+
+- Generate base workflow
+  ([`21fd7e4`](https://github.com/fleetingbytes/ci-starter/commit/21fd7e46645c758c6746fc88b784902704346054))
+
+### Refactoring
+
+- Remove redundant mark to use an autouse fixture
+  ([`38848bb`](https://github.com/fleetingbytes/ci-starter/commit/38848bbf1d7f33c370276404a80c545a10675c09))
+
+### Testing
+
+- Correct imports
+  ([`e160b7c`](https://github.com/fleetingbytes/ci-starter/commit/e160b7c000cad9c7a5a8b762e689027d66a172b6))
+
+- Move come constants to ci_starter.constants
+  ([`726ec4a`](https://github.com/fleetingbytes/ci-starter/commit/726ec4a52162a30993a7335125baa4078657d951))
+
+- Move to_yaml to utils as from_yaml
+  ([`601999f`](https://github.com/fleetingbytes/ci-starter/commit/601999f7bb2b3a1af63e46b515a0d714a671025e))
+
+
 ## v0.6.3 (2025-09-30)
 
 ### Refactoring
