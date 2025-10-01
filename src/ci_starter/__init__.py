@@ -1,11 +1,19 @@
+from collections.abc import Mapping
 from importlib.metadata import version as get_version
 from logging import getLogger
 from pathlib import Path
 
 from .asset_getter import get_asset
+from .constants import (
+    BASE_WORKFLOW_ASSET_PATH,
+)
+from .constants import (
+    BASE_WORKFLOW_FILE_PATH as BASE_WORKFLOW_FILE_PATH,
+)
 from .git_helpers import get_repo_name
 from .presets import DISTRIBUTION_ARTIFACTS_DIR, LOCKFILE_ARTIFACT
 from .semantic_release_config import SemanticReleaseConfiguration
+from .utils import from_yaml
 
 __version__ = get_version(__package__)
 
@@ -29,3 +37,13 @@ def generate_helper_script(script_path: Path) -> None:
 
     with script_path.open("w", encoding="utf-8") as script_file:
         script_file.write(script)
+
+
+def generate_base_workflow(**kwargs: Mapping[str, str]) -> dict:
+    workflow: str = get_asset(BASE_WORKFLOW_ASSET_PATH)
+    yaml = from_yaml(workflow)
+
+    env_dict = {k.upper(): v for k, v in kwargs.items()}
+    yaml["env"] = env_dict
+
+    return yaml
