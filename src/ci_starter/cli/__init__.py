@@ -76,4 +76,7 @@ def workflows(
     logger.debug("test_group = %s", test_group)
     logger.debug("test_command = %s", test_command)
 
-    generate_helper_script(workdir.helper_script)
+    workdir.helper_script.parent.mkdir(parents=True, exist_ok=True)
+    with workdir.helper_script.open("w", encoding="utf-8") as script_file:
+        script: str = generate_helper_script()
+        script_file.write(script)
