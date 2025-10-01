@@ -1,5 +1,5 @@
-from collections.abc import Callable
-from typing import ClassVar, Self
+from collections.abc import Callable, Hashable, Mapping
+from typing import Any, ClassVar, Self
 
 from ruamel.yaml.comments import Comment, CommentedMap, comment_attrib
 from ruamel.yaml.constructor import Constructor
@@ -11,7 +11,7 @@ from semver import VersionInfo
 from ci_starter.action import Action
 
 
-class Step:
+class Step(Mapping, Hashable):
     yaml_tag: ClassVar[str] = "!step"
     version_comment_start = "# v"
 
@@ -110,3 +110,15 @@ class Step:
         attrs = ", ".join((f"{k}={v}" for k, v in self.dict.items()))
         result = f"{self.__class__.__name__}({attrs})"
         return result
+
+    def __getitem__(self, key) -> Any:
+        return self.dict[key]
+
+    def __iter__(self) -> tuple[str, Any]:
+        return self.dict.items
+
+    def __len__(self) -> int:
+        return len(self.dict)
+
+    def __hash__(self) -> int:
+        return hash(self.uses.to_text())

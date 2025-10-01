@@ -47,3 +47,9 @@ def generate_base_workflow(**kwargs: Mapping[str, str]) -> dict:
     yaml["env"].update(env_dict)
 
     return yaml
+
+
+def generate_reusable_workflow(asset_path: Path) -> dict:
+    workflow: str = get_asset(asset_path)
+    yaml = from_yaml(workflow)
+    return yaml
