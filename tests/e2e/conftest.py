@@ -1,4 +1,3 @@
-from pathlib import Path
 from shlex import join, split
 from subprocess import run
 
@@ -6,9 +5,6 @@ from click.testing import CliRunner
 from git import Remote, Repo
 from pytest import fixture
 
-from ci_starter.constants import (
-    GITHUB_WORKFLOWS_DIR,
-)
 from tests.e2e.constants import (
     TEST_PROJECT_DIR_NAME,
     TEST_REPO_NAME,
@@ -62,8 +58,3 @@ def remote_url_not_set(test_project_path_str) -> None:
     repo = Repo(test_project_path_str)
     remote = next(iter(repo.remotes))
     Remote.remove(repo, remote.name)
-
-
-@fixture
-def test_project_workflows_path(test_project_path_str) -> Path:
-    return Path(test_project_path_str, GITHUB_WORKFLOWS_DIR)
