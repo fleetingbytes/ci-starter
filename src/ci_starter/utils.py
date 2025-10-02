@@ -8,7 +8,7 @@ from ci_starter.step import Step
 
 def step_yaml() -> Yaml:
     yaml = Yaml()
-    yaml.width = 108
+    yaml.width = 150
     yaml.preserve_quotes = True
     yaml.sequence_indent = 4
     yaml.sequence_dash_offset = 2

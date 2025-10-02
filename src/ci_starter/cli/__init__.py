@@ -84,12 +84,18 @@ def workflows(
     logger.debug("test_group = %s", test_group)
     logger.debug("test_command = %s", test_command)
 
-    workdir.helper_script.parent.mkdir(parents=True, exist_ok=True)
+    workdir.workflows.mkdir(parents=True, exist_ok=True)
+
     with workdir.helper_script.open("w", encoding="utf-8") as script_file:
         script: str = generate_helper_script()
         script_file.write(script)
 
-    workdir.base_workflow.parent.mkdir(parents=True, exist_ok=True)
     with workdir.base_workflow.open("w", encoding="utf-8") as base_workflow:
         data = generate_base_workflow()
         dump(data, base_workflow)
+
+    for reusable_workflow_file_path in (workdir.build, workdir.release, workdir.test_e2e):
+        with reusable_workflow_file_path.open("w", encoding="utf-8") as file:
+            asset_path = Path(*reusable_workflow_file_path.parts[-2:])
+            data = generate_reusable_workflow(asset_path)
+            dump(data, file)
