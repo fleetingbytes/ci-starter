@@ -1,4 +1,5 @@
 from collections.abc import Callable, Hashable, Mapping
+from copy import deepcopy
 from typing import Any, ClassVar, Self
 
 from ruamel.yaml.comments import Comment, CommentedMap, comment_attrib
@@ -19,14 +20,17 @@ class Step(Mapping, Hashable):
         comment = kwargs.pop("comment")
         setattr(self, comment_attrib, comment)
 
-        action_text = kwargs.pop("uses")
+        # store original kwargs to preserve item order when dumping
+        self._kwargs = kwargs
+
+        action_text = kwargs.get("uses")
         version_string = self.comment_string.removeprefix(self.version_comment_start)
         version = VersionInfo.parse(version_string)
         self._uses = Action.from_text(action_text, version=version)
 
         for k, v in kwargs.items():
-            setattr(self, k, v)
-        self._keys = kwargs.keys()
+            if k != "uses":
+                setattr(self, k, v)
 
     @property
     def comment_string(self) -> str:
@@ -77,7 +81,8 @@ class Step(Mapping, Hashable):
 
     @property
     def dict(self) -> dict:
-        result = {key: getattr(self, key) for key in self._keys} | {"uses": self.uses.to_text()}
+        result = deepcopy(self._kwargs)
+        result["uses"] = self.uses.to_text()
         return result
 
     @property
