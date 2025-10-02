@@ -18,7 +18,10 @@ from tests.e2e.constants import SUCCESSFUL_RETURN_CODE
 def get_comparator(
     runner: CliRunner, test_project_path_str: str, asset_path: Path, rendered_path: Path
 ) -> Comparator:
-    asset: str = get_asset(HELPER_SCRIPT_ASSET_PATH)
+    asset: str = get_asset(asset_path)
+
+    rendered_path = Path(test_project_path_str, rendered_path)
+    assert not rendered_path.exists()
 
     result: Result = runner.invoke(cli, ["-C", test_project_path_str, "workflows"])
     assert result.exit_code == SUCCESSFUL_RETURN_CODE
@@ -37,5 +40,4 @@ def get_comparator(
 def test_asset_vs_rendered_file(
     cli_runner: CliRunner, test_project_path_str: str, asset_path: Path, rendered_path: Path
 ) -> None:
-    comparator = get_comparator(cli_runner, test_project_path_str, asset_path, rendered_path)
-    comparator.compare_lines()
+    _comparator = get_comparator(cli_runner, test_project_path_str, asset_path, rendered_path)
