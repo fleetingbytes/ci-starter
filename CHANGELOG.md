@@ -2,6 +2,22 @@
 
 <!-- version list -->
 
+## v0.9.2 (2025-10-02)
+
+### Refactoring
+
+- Improve readability
+  ([`93e1097`](https://github.com/fleetingbytes/ci-starter/commit/93e109711e31a4deaa551ff3ec9a519af29bda09))
+
+### Testing
+
+- Compare asset vs rendered file
+  ([`d1cdffd`](https://github.com/fleetingbytes/ci-starter/commit/d1cdffdd0b7c08500e39f94cbf62eb679b305d2b))
+
+- Test all reusable workflows
+  ([`0fe8757`](https://github.com/fleetingbytes/ci-starter/commit/0fe87576c65690deb427eaa879e3c8b79603e7be))
+
+
 ## v0.9.1 (2025-10-02)
 
 ### Bug Fixes
