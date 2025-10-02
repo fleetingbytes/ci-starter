@@ -2,6 +2,40 @@
 
 <!-- version list -->
 
+## v0.9.0 (2025-10-02)
+
+### Bug Fixes
+
+- Update other allowed tags in psr config
+  ([`1f8aecd`](https://github.com/fleetingbytes/ci-starter/commit/1f8aecd1468232ac606b7b98f56c86e464142556))
+
+### Code Style
+
+- Reorder constants
+  ([`4cc7b35`](https://github.com/fleetingbytes/ci-starter/commit/4cc7b35dc29daf716d7ea50645330758d4adce63))
+
+### Features
+
+- Make cli dump base workflow
+  ([`5437361`](https://github.com/fleetingbytes/ci-starter/commit/543736113e10a2c7427c50f5a916f2d3fd984113))
+
+### Refactoring
+
+- Remove obsolete fixture
+  ([`bf1d8a8`](https://github.com/fleetingbytes/ci-starter/commit/bf1d8a8c578097fe872831f9fe8ea43aeeea1fbf))
+
+### Testing
+
+- Compare asset vs rendered file draft, not working yet
+  ([`9598b1d`](https://github.com/fleetingbytes/ci-starter/commit/9598b1d53cb06d0036b33fd1e061f841a830c9df))
+
+- Improved comparator
+  ([`bf3564a`](https://github.com/fleetingbytes/ci-starter/commit/bf3564ab27445ffa00a34de18647363d98be9c93))
+
+- Skip comparing files for now
+  ([`4d1ae32`](https://github.com/fleetingbytes/ci-starter/commit/4d1ae321f6de166d66fa9d4d4e986609f9217704))
+
+
 ## v0.8.2 (2025-10-01)
 
 ### Refactoring
