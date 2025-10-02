@@ -2,6 +2,17 @@
 
 <!-- version list -->
 
+## v0.9.1 (2025-10-02)
+
+### Bug Fixes
+
+- Preserve my yaml style
+  ([`5b6b660`](https://github.com/fleetingbytes/ci-starter/commit/5b6b660cfaeaa8860af725c19580d782e77aa35f))
+
+- Preserve order of step keys
+  ([`9004120`](https://github.com/fleetingbytes/ci-starter/commit/90041202bc3ad86cc709e01f50c6f2236a9bd029))
+
+
 ## v0.9.0 (2025-10-02)
 
 ### Bug Fixes
