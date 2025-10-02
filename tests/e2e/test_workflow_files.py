@@ -40,4 +40,5 @@ def get_comparator(
 def test_asset_vs_rendered_file(
     cli_runner: CliRunner, test_project_path_str: str, asset_path: Path, rendered_path: Path
 ) -> None:
-    _comparator = get_comparator(cli_runner, test_project_path_str, asset_path, rendered_path)
+    comparator = get_comparator(cli_runner, test_project_path_str, asset_path, rendered_path)
+    comparator.compare_lines()
