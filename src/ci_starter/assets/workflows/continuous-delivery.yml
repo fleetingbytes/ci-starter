@@ -27,11 +27,11 @@ jobs:
     steps:
       - !step
         name: Setup | Checkout Repository
-        uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8  # v5.0.0
+        uses: actions/checkout@0000000000000000000000000000000000000000  # v0.0.0
 
       - !step
         name: Lint
-        uses: astral-sh/ruff-action@57714a7c8a2e59f32539362ba31877a1957dded1  # v3.5.1
+        uses: astral-sh/ruff-action@0000000000000000000000000000000000000000  # v0.0.0
 
 
   variables:
@@ -139,7 +139,7 @@ jobs:
     steps:
       - !step
         name: Setup | Download Build Artifacts
-        uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0  # v5.0.0
+        uses: actions/download-artifact@0000000000000000000000000000000000000000  # v0.0.0
         id: artifact-download
         with:
           name: ${{ inputs.distribution-artifacts-name }}
@@ -147,7 +147,7 @@ jobs:
 
       - !step
         name: Publish Package Distributions to ${{ matrix.publish-data.registry }}
-        uses: pypa/gh-action-pypi-publish@ed0c53931b1dc9bd32cbe73a98c7f6766f8a527e  # v1.13.0
+        uses: pypa/gh-action-pypi-publish@0000000000000000000000000000000000000000  # v0.0.0
         with:
           packages-dir: ${{ inputs.distribution-artifacts-dir }}
           print-hash: true
