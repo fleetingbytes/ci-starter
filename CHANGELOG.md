@@ -2,6 +2,22 @@
 
 <!-- version list -->
 
+## v0.9.4 (2025-10-06)
+
+### Refactoring
+
+- Rename lock-file-artifact to lockfile-artifact
+  ([`cb70c2d`](https://github.com/fleetingbytes/ci-starter/commit/cb70c2d3267bec71e8a1a4f9abf629cfea78ae5f))
+
+### Testing
+
+- Test main workflow file cli-settable variables
+  ([`310973e`](https://github.com/fleetingbytes/ci-starter/commit/310973e47df11f7e4fc80610fe83e8860cdd977c))
+
+- **fix**: Correct renaming lock file artifact to lockfile artifact
+  ([`49d4831`](https://github.com/fleetingbytes/ci-starter/commit/49d48310e3348a2a0f72884c64ba87978f737e9d))
+
+
 ## v0.9.3 (2025-10-06)
 
 ### Refactoring
