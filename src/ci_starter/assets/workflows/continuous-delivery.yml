@@ -17,7 +17,7 @@ env:
   SEMANTIC_RELEASE_CONFIG_FILE: "./semantic-release.toml"
   DISTRIBUTION_ARTIFACTS_NAME: "dist"
   DISTRIBUTION_ARTIFACTS_DIR: "dist"
-  LOCK_FILE_ARTIFACT: "uv.lock"
+  LOCKFILE_ARTIFACT: "uv.lock"
 
 
 jobs:
@@ -46,7 +46,7 @@ jobs:
       run-test-command: ${{ steps.set-variables.outputs.run-test-command }}
       distribution-artifacts-name: ${{ steps.set-variables.outputs.distribution-artifacts-name }}
       distribution-artifacts-dir: ${{ steps.set-variables.outputs.distribution-artifacts-dir }}
-      lock-file-artifact: ${{ steps.set-variables.outputs.lock-file-artifact }}
+      lockfile-artifact: ${{ steps.set-variables.outputs.lockfile-artifact }}
       publish-data: ${{ steps.define-publish-data.outputs.data }}
     steps:
       - name: Setup | Set Variables for Reusable Workflows
@@ -59,7 +59,7 @@ jobs:
           echo "run-test-command=${RUN_TEST_COMMAND}" >> $GITHUB_OUTPUT
           echo "distribution-artifacts-name=${DISTRIBUTION_ARTIFACTS_NAME}" >> $GITHUB_OUTPUT
           echo "distribution-artifacts-dir=${DISTRIBUTION_ARTIFACTS_DIR}" >> $GITHUB_OUTPUT
-          echo "lock-file-artifact=${LOCK_FILE_ARTIFACT}" >> $GITHUB_OUTPUT
+          echo "lockfile-artifact=${LOCK_FILE_ARTIFACT}" >> $GITHUB_OUTPUT
       - name: Setup | Define Publishing Matrix
         id: define-publish-data
         run: |
@@ -74,7 +74,7 @@ jobs:
       semantic-release-config-file: ${{ needs.variables.outputs.semantic-release-config-file }}
       distribution-artifacts-name: ${{ needs.variables.outputs.distribution-artifacts-name }}
       distribution-artifacts-dir: ${{ needs.variables.outputs.distribution-artifacts-dir }}
-      lock-file-artifact: ${{ needs.variables.outputs.lock-file-artifact }}
+      lockfile-artifact: ${{ needs.variables.outputs.lockfile-artifact }}
 
 
   test-e2e:
@@ -105,7 +105,7 @@ jobs:
       semantic-release-config-file: ${{ needs.variables.outputs.semantic-release-config-file }}
       distribution-artifacts-name: ${{ needs.variables.outputs.distribution-artifacts-name }}
       distribution-artifacts-dir: ${{ needs.variables.outputs.distribution-artifacts-dir }}
-      lock-file-artifact: ${{ needs.variables.outputs.lock-file-artifact }}
+      lockfile-artifact: ${{ needs.variables.outputs.lockfile-artifact }}
     secrets: inherit
     permissions:
       contents: write

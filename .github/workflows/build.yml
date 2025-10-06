@@ -12,7 +12,7 @@ on:
       distribution-artifacts-dir:
         required: true
         type: string
-      lock-file-artifact:
+      lockfile-artifact:
         required: true
         type: string
 
@@ -91,7 +91,7 @@ jobs:
         if: ${{ steps.version.outputs.released == 'true' }}
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02  # v4.6.2
         with:
-          name: ${{ inputs.lock-file-artifact }}
-          path: ${{ inputs.lock-file-artifact }}
+          name: ${{ inputs.lockfile-artifact }}
+          path: ${{ inputs.lockfile-artifact }}
           if-no-files-found: error
           retention-days: 2

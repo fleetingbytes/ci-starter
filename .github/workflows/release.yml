@@ -15,7 +15,7 @@ on:
       distribution-artifacts-dir:
         required: true
         type: string
-      lock-file-artifact:
+      lockfile-artifact:
         required: true
         type: string
 
@@ -89,10 +89,10 @@ jobs:
         name: Setup | Download Lock File Artifact
         uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0  # v5.0.0
         with:
-          name: ${{ inputs.lock-file-artifact }}
+          name: ${{ inputs.lockfile-artifact }}
 
       - name: Setup | Stage Lock File for Version Commit
-        run: git add ${{ inputs.lock-file-artifact }}
+        run: git add ${{ inputs.lockfile-artifact }}
 
       - name: Release | Create Release
         id: release
