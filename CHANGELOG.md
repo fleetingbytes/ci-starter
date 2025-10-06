@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v0.9.3 (2025-10-06)
+
+### Refactoring
+
+- Move get_asset to utils
+  ([`bb7e7a8`](https://github.com/fleetingbytes/ci-starter/commit/bb7e7a85362a6ff24f6460683b2b05dc1edb3d5a))
+
+
 ## v0.9.2 (2025-10-02)
 
 ### Refactoring
