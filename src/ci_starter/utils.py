@@ -1,14 +1,16 @@
-from collections.abc import Mapping
+from collections.abc import Iterable, Mapping
 from pathlib import Path
 from sys import version_info
 from typing import TYPE_CHECKING, TextIO
 
 from ruamel.yaml import YAML as Yaml
 
-from ci_starter.step import Step
+from .action import Action
+from .step import Step
 
 if TYPE_CHECKING:
     from importlib.resources.abc import Traversable
+
 
 OLD_PYTHON_MINOR_VERSION = 11
 
@@ -46,3 +48,17 @@ def from_yaml(s: str) -> dict:
 def dump(obj: Mapping, filelike: TextIO) -> None:
     yaml = step_yaml()
     yaml.dump(obj, filelike)
+
+
+def get_actions_from_list(lst: list) -> Iterable[Action]:
+    for item in lst:
+        if isinstance(item, Step):
+            yield item.uses
+
+
+def get_actions(workflow: Mapping) -> Iterable[Action]:
+    for v in workflow.values():
+        if isinstance(v, list):
+            yield from get_actions_from_list(v)
+        elif isinstance(v, Mapping):
+            yield from get_actions(v)

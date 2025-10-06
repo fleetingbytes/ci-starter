@@ -1,15 +1,12 @@
-from collections.abc import Iterable, Mapping
-
 from pytest import mark, param
 
 from ci_starter import generate_base_workflow
-from ci_starter.action import Action
 from ci_starter.constants import (
     BUILD_WORKFLOW_ASSET_PATH,
     RELEASE_WORKFLOW_ASSET_PATH,
     TEST_E2E_WORKFLOW_ASSET_PATH,
 )
-from ci_starter.step import Step
+from ci_starter.utils import get_actions
 from tests.e2e.constants import (
     TEST_DISTRIBUTION_ARTIFACTS_DIR,
     TEST_DISTRIBUTION_ARTIFACTS_NAME,
@@ -39,20 +36,6 @@ def test_base_workflow_content():
     base_workflow: dict = generate_base_workflow(**test_env_dict)
 
     assert base_workflow["env"] == expected
-
-
-def get_actions_from_list(lst: list) -> Iterable[Action]:
-    for item in lst:
-        if isinstance(item, Step):
-            yield item.uses
-
-
-def get_actions(workflow: Mapping) -> Iterable[Action]:
-    for v in workflow.values():
-        if isinstance(v, list):
-            yield from get_actions_from_list(v)
-        elif isinstance(v, Mapping):
-            yield from get_actions(v)
 
 
 @mark.parametrize(
