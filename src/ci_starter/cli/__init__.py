@@ -16,9 +16,15 @@ from .. import (
 )
 from ..errors import CiStarterError
 from ..logging_conf import logging_configuration
+from ..presets import (
+    DISTRIBUTION_ARTIFACTS_DIR,
+    DISTRIBUTION_ARTIFACTS_NAME,
+    LOCKFILE_ARTIFACT,
+    SEMANTIC_RELEASE_CONFIG_FILE,
+)
 from ..utils import dump
 from .callbacks import WorkDir as WorkDir
-from .callbacks import set_module_name, set_workdir
+from .callbacks import get_package_name, set_module_name, set_workdir
 from .validations import validate_test_group, validate_workflow_file_name
 
 configure_logging(logging_configuration)
@@ -58,7 +64,7 @@ def psr_config(workdir):
 
 
 @cli.command()
-@option("-m", "--module_name")
+@option("-m", "--module-name")
 @option(
     "--workflow-file-name",
     default="continuous-delivery.yml",
@@ -90,8 +96,23 @@ def workflows(
         script: str = generate_helper_script()
         script_file.write(script)
 
-    with workdir.base_workflow.open("w", encoding="utf-8") as base_workflow:
-        data = generate_base_workflow()
+    base_workflow_file = workdir.workflows / workflow_file_name
+    with base_workflow_file.open("w", encoding="utf-8") as base_workflow:
+        cli_settable_vars = {
+            "package_name": get_package_name(workdir.pyproject_toml),
+            "distribution_file_incipit": module_name,
+            "test_dependency_group": test_group,
+            "run_test_command": test_command,
+        }
+        preset_vars = {
+            "semantic_release_config_file": SEMANTIC_RELEASE_CONFIG_FILE,
+            "distribution_artifacts_name": DISTRIBUTION_ARTIFACTS_NAME,
+            "distribution_artifacts_dir": DISTRIBUTION_ARTIFACTS_DIR,
+            "lockfile_artifact": LOCKFILE_ARTIFACT,
+        }
+        env_vars = cli_settable_vars | preset_vars
+
+        data = generate_base_workflow(**env_vars)
         dump(data, base_workflow)
 
     for reusable_workflow_file_path in (workdir.build, workdir.release, workdir.test_e2e):

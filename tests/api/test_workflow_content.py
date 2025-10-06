@@ -14,7 +14,7 @@ from tests.e2e.constants import (
     TEST_DISTRIBUTION_ARTIFACTS_DIR,
     TEST_DISTRIBUTION_ARTIFACTS_NAME,
     TEST_DISTRIBUTION_FILE_INCIPIT,
-    TEST_LOCK_FILE_ARTIFACT,
+    TEST_LOCKFILE_ARTIFACT,
     TEST_PACKAGE_NAME,
     TEST_RUN_TEST_COMMAND,
     TEST_SEMANTIC_RELEASE_CONFIG_FILE,
@@ -31,7 +31,7 @@ def test_base_workflow_content():
         "semantic_release_config_file": TEST_SEMANTIC_RELEASE_CONFIG_FILE,
         "distribution_artifacts_name": TEST_DISTRIBUTION_ARTIFACTS_NAME,
         "distribution_artifacts_dir": TEST_DISTRIBUTION_ARTIFACTS_DIR,
-        "lock_file_artifact": TEST_LOCK_FILE_ARTIFACT,
+        "lockfile_artifact": TEST_LOCKFILE_ARTIFACT,
     }
 
     expected = {k.upper(): v for k, v in test_env_dict.items()}

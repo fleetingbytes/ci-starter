@@ -6,7 +6,6 @@ from tomllib import load
 from click import Context, Parameter
 
 from ci_starter.constants import (
-    BASE_WORKFLOW_FILE_NAME,
     BUILD_WORKFLOW_FILE_NAME,
     GITHUB_WORKFLOWS_DIR,
     HELPER_SCRIPT_FILE_NAME,
@@ -20,7 +19,6 @@ class WorkDir:
     project: Path
     pyproject_toml: Path = field(init=False)
     workflows: Path = field(init=False)
-    base_workflow: Path = field(init=False)
     helper_script: Path = field(init=False)
     build: Path = field(init=False)
     release: Path = field(init=False)
@@ -29,7 +27,6 @@ class WorkDir:
     def __post_init__(self):
         self.pyproject_toml = self.project / "pyproject.toml"
         self.workflows = self.project / GITHUB_WORKFLOWS_DIR
-        self.base_workflow = self.workflows / BASE_WORKFLOW_FILE_NAME
         self.helper_script = self.workflows / HELPER_SCRIPT_FILE_NAME
         self.build = self.workflows / BUILD_WORKFLOW_FILE_NAME
         self.release = self.workflows / RELEASE_WORKFLOW_FILE_NAME
@@ -44,7 +41,7 @@ def normalize(name: str) -> str:
     return sub(r"[-_.]+", "_", name).lower()
 
 
-def get_project_name(pyproject_toml_path: Path) -> str:
+def get_package_name(pyproject_toml_path: Path) -> str:
     pyproject_toml: dict = load(pyproject_toml_path.open("rb"))
     project_name = pyproject_toml["project"]["name"]
     return project_name
@@ -52,7 +49,7 @@ def get_project_name(pyproject_toml_path: Path) -> str:
 
 def set_module_name(pyproject_toml_path: Path, module_name: str | None) -> str:
     if not module_name:
-        package_name = get_project_name(pyproject_toml_path)
+        package_name = get_package_name(pyproject_toml_path)
         module_name = normalize(package_name)
         return module_name
     return normalize(module_name)

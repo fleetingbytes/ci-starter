@@ -16,9 +16,22 @@ from ci_starter.constants import (
     TEST_E2E_WORKFLOW_ASSET_PATH,
     TEST_E2E_WORKFLOW_FILE_PATH,
 )
+from ci_starter.presets import (
+    DISTRIBUTION_ARTIFACTS_DIR,
+    DISTRIBUTION_ARTIFACTS_NAME,
+    LOCKFILE_ARTIFACT,
+    SEMANTIC_RELEASE_CONFIG_FILE,
+    WORKFLOWS_DIR,
+)
 from ci_starter.utils import get_asset
 from tests.e2e.comparator import Comparator
-from tests.e2e.constants import SUCCESSFUL_RETURN_CODE
+from tests.e2e.constants import (
+    SUCCESSFUL_RETURN_CODE,
+    TEST_DISTRIBUTION_FILE_INCIPIT,
+    TEST_PACKAGE_NAME,
+    TEST_RUN_TEST_COMMAND,
+    TEST_TEST_DEPENDENCY_GROUP,
+)
 
 
 def get_comparator(
@@ -53,3 +66,38 @@ def test_asset_vs_rendered_file(
 ) -> None:
     comparator = get_comparator(cli_runner, test_project_path_str, asset_path, rendered_path)
     comparator.compare_lines()
+
+
+def test_base_file_env_vars(cli_runner: CliRunner, test_project_path_str, yaml_parser):
+    custom_workflow_file_name = "main.yml"
+
+    result: Result = cli_runner.invoke(
+        cli,
+        [
+            "-C",
+            test_project_path_str,
+            "workflows",
+            "--test-group",
+            TEST_TEST_DEPENDENCY_GROUP,
+            "--test-command",
+            TEST_RUN_TEST_COMMAND,
+            "--module-name",
+            TEST_DISTRIBUTION_FILE_INCIPIT,
+            "--workflow-file-name",
+            custom_workflow_file_name,
+        ],
+    )
+    assert result.exit_code == SUCCESSFUL_RETURN_CODE
+
+    base_workflow_file = Path(test_project_path_str, WORKFLOWS_DIR, custom_workflow_file_name)
+    data: dict = yaml_parser.load(base_workflow_file)
+
+    assert data["env"]["PACKAGE_NAME"] == TEST_PACKAGE_NAME
+    assert data["env"]["DISTRIBUTION_FILE_INCIPIT"] == TEST_DISTRIBUTION_FILE_INCIPIT
+    assert data["env"]["TEST_DEPENDENCY_GROUP"] == TEST_TEST_DEPENDENCY_GROUP
+    assert data["env"]["RUN_TEST_COMMAND"] == TEST_RUN_TEST_COMMAND
+
+    assert data["env"]["SEMANTIC_RELEASE_CONFIG_FILE"] == SEMANTIC_RELEASE_CONFIG_FILE
+    assert data["env"]["DISTRIBUTION_ARTIFACTS_NAME"] == DISTRIBUTION_ARTIFACTS_NAME
+    assert data["env"]["DISTRIBUTION_ARTIFACTS_DIR"] == DISTRIBUTION_ARTIFACTS_DIR
+    assert data["env"]["LOCKFILE_ARTIFACT"] == LOCKFILE_ARTIFACT
