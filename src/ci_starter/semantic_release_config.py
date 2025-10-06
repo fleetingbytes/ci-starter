@@ -2,9 +2,9 @@ from collections.abc import Iterable
 from pathlib import Path
 from tomllib import loads
 
-from .asset_getter import get_asset
 from .bases import SemanticReleaseConfigurationBase
 from .placeholder import Placeholder
+from .utils import get_asset
 
 
 class SemanticReleaseConfiguration(SemanticReleaseConfigurationBase):

@@ -3,12 +3,11 @@ from importlib.metadata import version as get_version
 from logging import getLogger
 from pathlib import Path
 
-from .asset_getter import get_asset
 from .constants import BASE_WORKFLOW_ASSET_PATH, HELPER_SCRIPT_ASSET_PATH
 from .git_helpers import get_repo_name
 from .presets import DISTRIBUTION_ARTIFACTS_DIR, LOCKFILE_ARTIFACT
 from .semantic_release_config import SemanticReleaseConfiguration
-from .utils import from_yaml
+from .utils import from_yaml, get_asset
 
 __version__ = get_version(__package__)
 

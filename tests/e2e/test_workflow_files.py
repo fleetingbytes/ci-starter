@@ -3,7 +3,6 @@ from pathlib import Path
 from click.testing import CliRunner, Result
 from pytest import mark, param
 
-from ci_starter.asset_getter import get_asset
 from ci_starter.cli import cli
 from ci_starter.constants import (
     BASE_WORKFLOW_ASSET_PATH,
@@ -17,6 +16,7 @@ from ci_starter.constants import (
     TEST_E2E_WORKFLOW_ASSET_PATH,
     TEST_E2E_WORKFLOW_FILE_PATH,
 )
+from ci_starter.utils import get_asset
 from tests.e2e.comparator import Comparator
 from tests.e2e.constants import SUCCESSFUL_RETURN_CODE
 

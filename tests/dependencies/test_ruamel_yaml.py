@@ -6,8 +6,8 @@ from ruamel.yaml.comments import Comment, CommentedMap, CommentedSeq
 from ruamel.yaml.tokens import CommentToken
 
 from ci_starter.action import Action
-from ci_starter.asset_getter import get_asset
 from ci_starter.step import Step
+from ci_starter.utils import get_asset
 
 
 def test_mapping_subclass() -> None:
