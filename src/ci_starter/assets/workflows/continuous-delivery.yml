@@ -59,7 +59,7 @@ jobs:
           echo "run-test-command=${RUN_TEST_COMMAND}" >> $GITHUB_OUTPUT
           echo "distribution-artifacts-name=${DISTRIBUTION_ARTIFACTS_NAME}" >> $GITHUB_OUTPUT
           echo "distribution-artifacts-dir=${DISTRIBUTION_ARTIFACTS_DIR}" >> $GITHUB_OUTPUT
-          echo "lockfile-artifact=${LOCK_FILE_ARTIFACT}" >> $GITHUB_OUTPUT
+          echo "lockfile-artifact=${LOCKFILE_ARTIFACT}" >> $GITHUB_OUTPUT
       - name: Setup | Define Publishing Matrix
         id: define-publish-data
         run: |
