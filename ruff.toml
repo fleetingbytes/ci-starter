@@ -44,6 +44,9 @@ select = [
 "tests/**/conftest.py" = [
     "N811",    # constant-imported-as-non-constant
 ]
+"tests/e2e/test_update_actions.py" = [
+    "N811",    # constant-imported-as-non-constant
+]
 
 extend-safe-fixes = [
     "TC001", # typing-only-first-party-import
