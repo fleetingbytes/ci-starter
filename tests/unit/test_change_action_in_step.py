@@ -16,7 +16,7 @@ def test_change_action_in_step_and_shift_comment_column(step_parser) -> None:
     data = step_parser.load(string)
     step = data["steps"][0]
 
-    action = Action(user="new_user", repo="new_repo", commit="7ea42", version=VersionInfo.parse("4.5.6"))
+    action = Action(owner="new_user", repo="new_repo", commit="7ea42", version=VersionInfo.parse("4.5.6"))
     step.uses = action
 
     actual = StringIO()

@@ -7,16 +7,16 @@ from .errors import ActionNotParsableError
 
 
 class Action:
-    PATTERN = compile(r"(?P<user>[\w_-]+)/(?P<repo>[\w_-]+)@(?P<commit>[\S]+)")
+    PATTERN = compile(r"(?P<owner>[\w_-]+)/(?P<repo>[\w_-]+)@(?P<commit>[\S]+)")
 
-    def __init__(self, user: str, repo: str, commit: str, version: VersionInfo | None = None) -> None:
-        self.user: str = user
+    def __init__(self, owner: str, repo: str, commit: str, version: VersionInfo | None = None) -> None:
+        self.owner: str = owner
         self.repo: str = repo
         self.commit: str = commit
         self.version: VersionInfo = version
 
     def to_text(self):
-        text = f"{self.user}/{self.repo}@{self.commit}"
+        text = f"{self.owner}/{self.repo}@{self.commit}"
         return text
 
     @classmethod
