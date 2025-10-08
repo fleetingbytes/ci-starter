@@ -5,9 +5,9 @@ from ruamel.yaml import YAML as Yaml
 
 from ci_starter.cli import cli
 from ci_starter.constants import GITHUB_WORKFLOWS_DIR
+from ci_starter.dataclasses import CommitVersion, OwnerRepo
 from ci_starter.utils import get_actions
 from tests.e2e.constants import SUCCESSFUL_RETURN_CODE
-from tests.e2e.dataclasses import CommitVersion, OwnerRepo
 
 
 def test_update_action(cli_runner: CliRunner, test_project_path_str, step_parser: Yaml) -> None:
