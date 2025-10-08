@@ -42,3 +42,7 @@ def generate_reusable_workflow(asset_path: Path) -> dict:
     workflow: str = get_asset(asset_path)
     yaml = from_yaml(workflow)
     return yaml
+
+
+def update_actions(workflows_path: Path) -> None:
+    pass

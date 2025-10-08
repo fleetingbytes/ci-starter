@@ -10,6 +10,7 @@ from .. import (
     generate_base_workflow,
     generate_helper_script,
     generate_semantic_release_config,
+    update_actions,
 )
 from .. import (
     generate_reusable_workflow as generate_reusable_workflow,
@@ -120,3 +121,14 @@ def workflows(
             asset_path = Path(*reusable_workflow_file_path.parts[-2:])
             data = generate_reusable_workflow(asset_path)
             dump(data, file)
+
+
+@cli.command("update-actions")
+@pass_obj
+def update_actions_cli(workdir):
+    logger.debug("Update-actions got workdir %s", workdir)
+    try:
+        update_actions(workdir.workflows)
+    except CiStarterError as err:
+        logger.exception(err)
+        exit(err.code)
