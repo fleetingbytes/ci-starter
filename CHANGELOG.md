@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v0.10.2 (2025-10-09)
+
+### Refactoring
+
+- **test**: Add error text if versions are different
+  ([`aa07920`](https://github.com/fleetingbytes/ci-starter/commit/aa079208024f9c338a454113eebeba0d9b5c2303))
+
+
 ## v0.10.1 (2025-10-09)
 
 ### Refactoring
