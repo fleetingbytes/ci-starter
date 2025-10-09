@@ -1,7 +1,7 @@
 from collections.abc import Iterable, Mapping
 from pathlib import Path
 from sys import version_info
-from typing import TYPE_CHECKING, TextIO
+from typing import TYPE_CHECKING, Any, TextIO
 
 from ruamel.yaml import YAML as Yaml
 
@@ -39,7 +39,7 @@ def step_yaml() -> Yaml:
     return yaml
 
 
-def from_yaml(s: str) -> dict:
+def from_yaml(s: str | Path) -> dict:
     yaml = step_yaml()
     obj = yaml.load(s)
     return obj
@@ -62,3 +62,24 @@ def get_actions(workflow: Mapping) -> Iterable[Action]:
             yield from get_actions_from_list(v)
         elif isinstance(v, Mapping):
             yield from get_actions(v)
+
+
+def get_steps_from_list(lst: list) -> Iterable[Step]:
+    for item in lst:
+        if isinstance(item, Step):
+            yield item
+
+
+def get_steps(workflow: Mapping) -> Iterable[Step]:
+    for v in workflow.values():
+        if isinstance(v, list):
+            yield from get_steps_from_list(v)
+        elif isinstance(v, Mapping):
+            yield from get_steps(v)
+
+
+def update_step_data(data: Mapping[str, Any], action: Action) -> dict[str, Any]:
+    for step in get_steps(data):
+        if step.uses.name == action.name:
+            step.uses = action
+    return data

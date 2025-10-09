@@ -2,12 +2,16 @@ from collections.abc import Mapping
 from importlib.metadata import version as get_version
 from logging import getLogger
 from pathlib import Path
+from typing import TYPE_CHECKING
 
 from .constants import BASE_WORKFLOW_ASSET_PATH, HELPER_SCRIPT_ASSET_PATH
 from .git_helpers import get_repo_name
 from .presets import DISTRIBUTION_ARTIFACTS_DIR, LOCKFILE_ARTIFACT
 from .semantic_release_config import SemanticReleaseConfiguration
-from .utils import from_yaml, get_asset
+from .utils import dump, from_yaml, get_actions, get_asset, update_step_data
+
+if TYPE_CHECKING:
+    from .action import Action
 
 __version__ = get_version(__package__)
 
@@ -45,4 +49,17 @@ def generate_reusable_workflow(asset_path: Path) -> dict:
 
 
 def update_actions(workflows_path: Path) -> None:
-    pass
+    actions: dict[str, Action] = {}
+
+    for file in workflows_path.rglob("*.yml"):
+        data = from_yaml(file)
+
+        for action in get_actions(data):
+            if action.name not in actions:
+                action.update()
+                actions[action.name] = action
+            updated_action = actions[action.name]
+
+            data = update_step_data(data, updated_action)
+
+        dump(data, file)
