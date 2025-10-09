@@ -2,6 +2,72 @@
 
 <!-- version list -->
 
+## v0.10.0 (2025-10-09)
+
+### Bug Fixes
+
+- Fallback to GH_API_TOKEN
+  ([`bed760f`](https://github.com/fleetingbytes/ci-starter/commit/bed760fd098aeca72c511f8165d4549afc76d017))
+
+### Chores
+
+- Add .env to gitignore
+  ([`376bc0e`](https://github.com/fleetingbytes/ci-starter/commit/376bc0e261a13a9e0fd15c647ac02210e3f39b0d))
+
+- Add script to generate workflow assets
+  ([`975bb7c`](https://github.com/fleetingbytes/ci-starter/commit/975bb7cf3ba921726e292ad4c5f8ff966ad41611))
+
+- Update ruff dependency
+  ([`dac4c32`](https://github.com/fleetingbytes/ci-starter/commit/dac4c3206c39825c8c67283090d7d41f711073cb))
+
+### Code Style
+
+- Update ruff rules
+  ([`1e0b1dd`](https://github.com/fleetingbytes/ci-starter/commit/1e0b1dd2afd8c580d6995df30c0b86b168751577))
+
+### Continuous Integration
+
+- Map GH_API_TOKEN explicitly by name
+  ([`3144078`](https://github.com/fleetingbytes/ci-starter/commit/31440789464e33c6f6b97cff8e1bde0833e05661))
+
+- Try to use GITHUB_TOKEN as GH_API_TOKEN
+  ([`5d66001`](https://github.com/fleetingbytes/ci-starter/commit/5d66001cf1400461276ae06864f52ce95f089c8d))
+
+- Update action version
+  ([`ea7fbfb`](https://github.com/fleetingbytes/ci-starter/commit/ea7fbfb003588a4b5fe5096830e6cee149c1b8d6))
+
+- Use GH_API_TOKEN
+  ([`45975ef`](https://github.com/fleetingbytes/ci-starter/commit/45975effcad74a30df874da0e1b565f3f0ff147a))
+
+### Features
+
+- Add subcommand update-actions
+  ([`03c4a27`](https://github.com/fleetingbytes/ci-starter/commit/03c4a271660f36c34b017704d15efd64cc6f46e8))
+
+### Refactoring
+
+- Do not specify any action version in assets
+  ([`f43455c`](https://github.com/fleetingbytes/ci-starter/commit/f43455cd8ea75247e92e4efc62338bdbd586ad32))
+
+- Move dataclasses to ci_starter
+  ([`92e36c7`](https://github.com/fleetingbytes/ci-starter/commit/92e36c71dba7e61f6651b9ba746f75eb5d53a407))
+
+- Move get_actions to utils
+  ([`74d01d9`](https://github.com/fleetingbytes/ci-starter/commit/74d01d9b0420461a31a72df8f11eaaa16aa54e4e))
+
+- Rename field user to owner
+  ([`1770fd1`](https://github.com/fleetingbytes/ci-starter/commit/1770fd1ffb8d0576632d0d8059ccf3ea5527db56))
+
+### Testing
+
+- Add test for update-actions
+  ([`081b5ad`](https://github.com/fleetingbytes/ci-starter/commit/081b5ad50dafdb20d3a370d6666f9fba1cfe3136))
+
+- **refactor**: Test_update_actions to use Action rather than dataclasses.OwnerRepo |
+  dataclasses.CommitVersion
+  ([`72f42cc`](https://github.com/fleetingbytes/ci-starter/commit/72f42cc8436b6674b242c61eb5330e3a86e1184e))
+
+
 ## v0.9.4 (2025-10-06)
 
 ### Refactoring
