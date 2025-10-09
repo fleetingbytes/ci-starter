@@ -34,12 +34,12 @@ actions_from_all_workflows() {
 
 get_actions_from_all_workflows_with_their_latest_commits_and_versions() {
     actions_from_all_workflows | while read owner repo old_commit old_version; do
-        url="https://api.github.com/repos/$owner/$repo/tags" 
+        url="https://api.github.com/repos/$owner/$repo/tags"
 
         if [ -n "$CI_STARTER_GH_API_TOKEN" ]; then
-            tags=$(curl -s -H "Authorization: token $CI_STARTER_GH_API_TOKEN" "$url")
+            tags=$(curl -sS -H "Authorization: token $CI_STARTER_GH_API_TOKEN" "$url")
         else
-            tags=$(curl -s "$url")
+            tags=$(curl -sS "$url")
         fi
 
         latest_release=$(echo "$tags" | jq -rc '.[0]')
@@ -62,7 +62,9 @@ find_line_where_original_code_continues() {
 
 generate_code() {
     get_actions_from_all_workflows_with_their_latest_commits_and_versions | while read owner repo commit version; do
-        printf "    expected_actions[OwnerRepo(\"%s\", \"%s\")] = CommitVersion(\"%s\", \"%s\")\n" "$owner" "$repo" "$commit" "$version"
+        name="$owner/$repo"
+        printf '    expected_actions["%s"] = Action(owner="%s", repo="%s", commit="%s", version=Version.parse("%s"),)\n' \
+            "$name" "$owner" "$repo" "$commit" "$version"
     done
     printf "\n"
 }

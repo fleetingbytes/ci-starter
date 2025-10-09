@@ -45,6 +45,7 @@ select = [
     "N811",    # constant-imported-as-non-constant
 ]
 "tests/e2e/test_update_actions.py" = [
+    "F401",    # unused-import
     "N811",    # constant-imported-as-non-constant
 ]
 
