@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v0.10.1 (2025-10-09)
+
+### Refactoring
+
+- Do not fallback to GH_API_TOKEN, only use CI_STARTER_GH_API_TOKEN
+  ([`f477100`](https://github.com/fleetingbytes/ci-starter/commit/f477100e41f6bcfd2faa5671537d4b9d75183222))
+
+
 ## v0.10.0 (2025-10-09)
 
 ### Bug Fixes
