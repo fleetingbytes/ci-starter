@@ -4,6 +4,7 @@ from sys import version_info
 from typing import TYPE_CHECKING, Any, TextIO
 
 from ruamel.yaml import YAML as Yaml
+from semver.version import Version
 
 from .action import Action
 from .step import Step
@@ -83,3 +84,11 @@ def update_step_data(data: Mapping[str, Any], action: Action) -> dict[str, Any]:
         if step.uses.name == action.name:
             step.uses = action
     return data
+
+
+def compare(actual: Version, expected: Version) -> str:
+    if actual.compare(expected) == 1:
+        return "newer"
+    elif actual.compare(expected) == -1:
+        return "older"
+    return "same"

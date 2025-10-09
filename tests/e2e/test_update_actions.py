@@ -7,7 +7,7 @@ from semver.version import Version
 from ci_starter.action import Action
 from ci_starter.cli import cli
 from ci_starter.constants import GITHUB_WORKFLOWS_DIR
-from ci_starter.utils import get_actions
+from ci_starter.utils import compare, get_actions
 from tests.e2e.constants import SUCCESSFUL_RETURN_CODE
 
 
@@ -68,10 +68,13 @@ def test_update_action(cli_runner: CliRunner, test_project_path_str, step_parser
     for file in workflows:
         data = step_parser.load(file)
         for action in get_actions(data):
-            actual_commit = action.commit
             actual_version = action.version
-            expected_commit = expected_actions[action.name].commit
+            actual_commit = action.commit
             expected_version = expected_actions[action.name].version
+            expected_commit = expected_actions[action.name].commit
 
+            compare_result = compare(actual_version, expected_version)
+            assert actual_version == expected_version, (
+                f"actual version is {compare_result} than the expected version"
+            )
             assert actual_commit == expected_commit
-            assert actual_version == expected_version
