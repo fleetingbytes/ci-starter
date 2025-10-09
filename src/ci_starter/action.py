@@ -69,7 +69,9 @@ class Action:
             "Accept": "application.vnd.github+json",
         }
         if self.TOKEN:
-            result.update(Authorization=f"token {self.TOKEN}")
+            result.update(Authorization=f"Bearer {self.TOKEN}")
+        elif token := getenv("GH_API_TOKEN"):
+            result.update(Authorization=f"Bearer {token}")
         return result
 
     def __repr__(self) -> str:
