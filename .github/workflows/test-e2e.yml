@@ -71,5 +71,5 @@ jobs:
       - name: Test | Run pytest
         run: ${{ inputs.run-test-command }}
         env:
-          GH_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CI_STARTER_GH_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
