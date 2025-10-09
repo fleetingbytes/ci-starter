@@ -83,6 +83,7 @@ jobs:
       - variables
       - build
     uses: ./.github/workflows/test-e2e.yml
+    secrets: inherit
     with:
       new-release-detected: ${{ needs.build.outputs.new-release-detected }}
       distribution-artifacts-name: ${{ needs.variables.outputs.distribution-artifacts-name }}

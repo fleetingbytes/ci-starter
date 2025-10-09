@@ -24,6 +24,9 @@ on:
       run-test-command:
         required: true
         type: string
+    secrets:
+      GH_API_TOKEN:
+        required: true
 
 
 jobs:
