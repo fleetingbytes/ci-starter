@@ -11,7 +11,7 @@ from tests.e2e.constants import CI_STARTER_VERSION
     "subcommand, option, start, end",
     (
         param((), ("--version",), "ci-start", CI_STARTER_VERSION, id="version"),
-        param((), ("--help",), "Usage", "workflows", id="help"),
+        param((), ("--help",), "Usage", "files", id="help"),
         param(("psr-config",), ("--help",), "Usage", "exit.", id="psr-config"),
         param(("workflows",), ("--help",), "Usage", "exit.", id="workflows"),
     ),
