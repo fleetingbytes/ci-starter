@@ -83,7 +83,6 @@ jobs:
           name: ${{ inputs.distribution-artifacts-name }}
           path: ${{ format('{0}/**', inputs.distribution-artifacts-dir) }}
           if-no-files-found: error
-          retention-days: 2
 
       - !step
         name: Upload | Lock File Artifact
@@ -93,4 +92,3 @@ jobs:
           name: ${{ inputs.lockfile-artifact }}
           path: ${{ inputs.lockfile-artifact }}
           if-no-files-found: error
-          retention-days: 2
