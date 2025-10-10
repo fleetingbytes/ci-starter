@@ -2,6 +2,19 @@
 
 <!-- version list -->
 
+## v0.10.4 (2025-10-10)
+
+### Bug Fixes
+
+- Remove hard-coded retention days period from build workflow asset
+  ([`83045be`](https://github.com/fleetingbytes/ci-starter/commit/83045bee218dbcf3c6d164add8eafd5e58b53a1e))
+
+### Continuous Integration
+
+- Remove hardcoded retention period from build ci
+  ([`5b00327`](https://github.com/fleetingbytes/ci-starter/commit/5b003270e2f61712e25e47c23dc91f2a063bfb72))
+
+
 ## v0.10.3 (2025-10-10)
 
 ### Bug Fixes
