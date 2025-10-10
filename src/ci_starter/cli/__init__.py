@@ -101,6 +101,7 @@ def workflows(
     with workdir.helper_script.open("w", encoding="utf-8") as script_file:
         script: str = generate_helper_script()
         script_file.write(script)
+    _make_script_executable = workdir.helper_script.chmod(0o755)
 
     base_workflow_file = workdir.workflows / workflow_file_name.name
     with base_workflow_file.open("w", encoding="utf-8") as base_workflow:
