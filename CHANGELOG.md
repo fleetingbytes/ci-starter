@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v0.10.5 (2025-10-10)
+
+### Bug Fixes
+
+- Make verify-upstream-has-not-changed.sh executable after creation
+  ([`3358649`](https://github.com/fleetingbytes/ci-starter/commit/3358649db5fe6aef127c31c5772fe059fb65282a))
+
+
 ## v0.10.4 (2025-10-10)
 
 ### Bug Fixes
