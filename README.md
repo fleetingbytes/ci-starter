@@ -1,10 +1,12 @@
 # ci-starter
 
-Kickstarts the semantic release pipeline for your Python project on GitHub. It creates an opinionated configuration file for python-semantic-release, _semantic-release.toml_ and a pipeline with reusable workflows in _.github/workflows_.
+Kickstarts the semantic release pipeline for your Python project on GitHub. It creates an configuration file _semantic-release.toml_ for python-semantic-release and a pipeline with reusable workflows in _.github/workflows_.
 
 ## Usage
 
 ### Prerequisites
+
+You will have to do the flollowing things yourself:
 
 - Create your project:
     - Use uv to initialize your project (must be a package)
@@ -18,7 +20,7 @@ Kickstarts the semantic release pipeline for your Python project on GitHub. It c
     - Create tests (CI/CD pipeline would fail if no tests are found)
     - Format and check everything with ruff
     - Set up a trusted publisher for your project on pypi.org:
-        - Workflow: `continuous-delivery.yml`
+        - Workflow: `continuous-delivery.yml` (default workflow name)
         - Environment name: `pypi`
     - Set up a trusted publisher for your project on test.pypi.org:
         - Workflow: `continuous-delivery.yml`
@@ -26,17 +28,16 @@ Kickstarts the semantic release pipeline for your Python project on GitHub. It c
     - Create a GitHub repository for your project
     - Add remote origin and its ssh address at your local clone
 
-### Create CI/CD Pipeline
+### Create CI/CD Pipeline With ci-starter
 
-- run `ci-start` (not _ci-starter_) in the project directory:
-```
-ci-start \
-    --module-name my_app \
-    --package-name my-app \
-    --workflow-file continuous_delivery.yml \
-    --test-group test`
-    --test-command "uv run -- pytest -v"
-    .
+Run these commands:
+
+```text
+$ ci-start psr-config
+$ ci-start workflows
+$ ci-start update-actions
 ```
 
-That should create you a configuration file (_semantic-release.toml_) and some workflow files (.github/workflows/*.yml) to start with.
+The psr-config command creates the _semantic-release.toml_, the second one creates the workflow files (.github/workflows/*.yml), the third one fetches the current versions of the GitHub Actions used in the workflow files and updates the workflow files accordingly.
+
+It is your responsibility to check whether it is safe to use the suggested current versions of the GitHub Actions (beware of supply chain attacks).
