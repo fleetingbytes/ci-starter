@@ -2,6 +2,37 @@
 
 <!-- version list -->
 
+## v0.10.3 (2025-10-10)
+
+### Bug Fixes
+
+- Cli now uses only the name of the workflow file even if a whole path was given
+  ([`56090f5`](https://github.com/fleetingbytes/ci-starter/commit/56090f591507fb2cb1c327a9814de6da19ceef80))
+
+### Chores
+
+- Bump uv_build version
+  ([`ba45225`](https://github.com/fleetingbytes/ci-starter/commit/ba45225085e6ec17869146c7933c6d37293aa8d8))
+
+### Continuous Integration
+
+- Update version of setup-uv
+  ([`bef6f48`](https://github.com/fleetingbytes/ci-starter/commit/bef6f4886ff42a455b22cbecf23fd509b9657103))
+
+### Documentation
+
+- Update documentation in update-test_update_actions.sh
+  ([`e139126`](https://github.com/fleetingbytes/ci-starter/commit/e13912659882d1fc97f1aa55e45bde53711fbcb5))
+
+- Update readme
+  ([`5d699fb`](https://github.com/fleetingbytes/ci-starter/commit/5d699fbfd2542a561c28c13d2ae5727b8feca288))
+
+### Testing
+
+- **fix**: Update expected end of help output in --help
+  ([`182531a`](https://github.com/fleetingbytes/ci-starter/commit/182531a456de6733babb4804d6153683ec1b657f))
+
+
 ## v0.10.2 (2025-10-09)
 
 ### Refactoring
