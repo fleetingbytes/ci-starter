@@ -1,5 +1,7 @@
 from pathlib import Path
 
+MAX_HELP_CONTENT_WIDTH = 120
+
 WORKFLOWS_DIR_NAME = "workflows"
 GITHUB_WORKFLOWS_DIR = f".github/{WORKFLOWS_DIR_NAME}"
 

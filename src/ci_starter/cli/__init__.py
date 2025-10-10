@@ -15,6 +15,7 @@ from .. import (
 from .. import (
     generate_reusable_workflow as generate_reusable_workflow,
 )
+from ..constants import MAX_HELP_CONTENT_WIDTH
 from ..errors import CiStarterError
 from ..logging_conf import logging_configuration
 from ..presets import (
@@ -35,7 +36,10 @@ logger = getLogger(__name__)
 entry_point_name = "ci-start"
 
 
-@group(name=entry_point_name)
+@group(
+    name=entry_point_name,
+    context_settings={"show_default": True, "max_content_width": MAX_HELP_CONTENT_WIDTH},
+)
 @version_option()
 @option(
     "-C",
@@ -53,7 +57,7 @@ def cli(
     context.obj = workdir
 
 
-@cli.command()
+@cli.command(short_help="Create configuration file for python-semantic-release")
 @pass_obj
 def psr_config(workdir):
     logger.debug("Psr-config got workdir %s", workdir)
@@ -64,13 +68,14 @@ def psr_config(workdir):
         exit(err.code)
 
 
-@cli.command()
+@cli.command(short_help="Create workflow files")
 @option("-m", "--module-name")
 @option(
     "--workflow-file-name",
     default="continuous-delivery.yml",
     type=ClickPath(writable=True, path_type=Path),
     callback=validate_workflow_file_name,
+    help="Name of the main workflow file",
 )
 @option("--test-group", default="test", callback=validate_test_group)
 @option("--test-command", default="uv run -- pytest --verbose")
@@ -97,7 +102,7 @@ def workflows(
         script: str = generate_helper_script()
         script_file.write(script)
 
-    base_workflow_file = workdir.workflows / workflow_file_name
+    base_workflow_file = workdir.workflows / workflow_file_name.name
     with base_workflow_file.open("w", encoding="utf-8") as base_workflow:
         cli_settable_vars = {
             "package_name": get_package_name(workdir.pyproject_toml),
@@ -123,7 +128,7 @@ def workflows(
             dump(data, file)
 
 
-@cli.command("update-actions")
+@cli.command("update-actions", short_help="Update GitHub Action versions used in the workflow files")
 @pass_obj
 def update_actions_cli(workdir):
     logger.debug("Update-actions got workdir %s", workdir)
