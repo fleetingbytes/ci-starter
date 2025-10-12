@@ -2,6 +2,14 @@
 
 <!-- version list -->
 
+## v0.10.6 (2025-10-12)
+
+### Refactoring
+
+- Clean up setting helper script executable
+  ([`906dd25`](https://github.com/fleetingbytes/ci-starter/commit/906dd252a9d423f76ea3e6c413c39642c87bd448))
+
+
 ## v0.10.5 (2025-10-10)
 
 ### Bug Fixes
