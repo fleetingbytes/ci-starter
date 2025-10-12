@@ -1,5 +1,8 @@
 from collections.abc import Iterable, Mapping
 from pathlib import Path
+from stat import S_IXGRP as EXECUTABLE_FOR_GROUP
+from stat import S_IXOTH as EXECUTABLE_FOR_OTHERS
+from stat import S_IXUSR as EXECUTABLE_FOR_USER
 from sys import version_info
 from typing import TYPE_CHECKING, Any, TextIO
 
@@ -92,3 +95,9 @@ def compare(actual: Version, expected: Version) -> str:
     elif actual.compare(expected) == -1:
         return "older"
     return "same"
+
+
+def make_path_executable(path: Path) -> None:
+    old_mode = path.stat().st_mode
+    executable = old_mode | EXECUTABLE_FOR_USER | EXECUTABLE_FOR_GROUP | EXECUTABLE_FOR_OTHERS
+    path.chmod(executable)

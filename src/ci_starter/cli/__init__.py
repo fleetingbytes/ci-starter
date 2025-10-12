@@ -24,7 +24,7 @@ from ..presets import (
     LOCKFILE_ARTIFACT,
     SEMANTIC_RELEASE_CONFIG_FILE,
 )
-from ..utils import dump
+from ..utils import dump, make_path_executable
 from .callbacks import WorkDir as WorkDir
 from .callbacks import get_package_name, set_module_name, set_workdir
 from .validations import validate_test_group, validate_workflow_file_name
@@ -101,7 +101,7 @@ def workflows(
     with workdir.helper_script.open("w", encoding="utf-8") as script_file:
         script: str = generate_helper_script()
         script_file.write(script)
-    _make_script_executable = workdir.helper_script.chmod(0o755)
+    make_path_executable(workdir.helper_script)
 
     base_workflow_file = workdir.workflows / workflow_file_name.name
     with base_workflow_file.open("w", encoding="utf-8") as base_workflow:
