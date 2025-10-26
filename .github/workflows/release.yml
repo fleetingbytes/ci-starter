@@ -69,7 +69,7 @@ jobs:
 
       - !step
         name: Setup | Install uv
-        uses: astral-sh/setup-uv@eb1897b8dc4b5d5bfe39a428a8f2304605e0983c  # v7.0.0
+        uses: astral-sh/setup-uv@2ddd2b9cb38ad8efd50337e8ab201519a34c9f24  # v7.1.1
       - name: Setup | Install python-semantic-release
         run: uv tool install python-semantic-release
 
@@ -78,7 +78,7 @@ jobs:
 
       - !step
         name: Setup | Download Build Artifacts
-        uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0  # v5.0.0
+        uses: actions/download-artifact@018cc2cf5baa6db3ef3c5f8a56943fffe632ef53  # v6.0.0
         id: artifact-download
         with:
           name: ${{ inputs.distribution-artifacts-name }}
@@ -86,7 +86,7 @@ jobs:
 
       - !step
         name: Setup | Download Lock File Artifact
-        uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0  # v5.0.0
+        uses: actions/download-artifact@018cc2cf5baa6db3ef3c5f8a56943fffe632ef53  # v6.0.0
         with:
           name: ${{ inputs.lockfile-artifact }}
 
