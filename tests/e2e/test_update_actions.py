@@ -25,8 +25,8 @@ def test_update_action(cli_runner: CliRunner, test_project_path_str, step_parser
     expected_actions["actions/checkout"] = Action(
         owner="actions",
         repo="checkout",
-        commit="1af3b93b6815bc44a9784bd300feb67ff0d1eeb3",
-        version=Version.parse("6.0.0"),
+        commit="8e8c483db84b4bee98b60c0593521ed34d9990e8",
+        version=Version.parse("6.0.1"),
     )
     expected_actions["actions/download-artifact"] = Action(
         owner="actions",
@@ -55,8 +55,8 @@ def test_update_action(cli_runner: CliRunner, test_project_path_str, step_parser
     expected_actions["astral-sh/setup-uv"] = Action(
         owner="astral-sh",
         repo="setup-uv",
-        commit="1e862dfacbd1d6d858c55d9b792c756523627244",
-        version=Version.parse("7.1.4"),
+        commit="ed21f2f24f8dd64503750218de024bcf64c7250a",
+        version=Version.parse("7.1.5"),
     )
     expected_actions["pypa/gh-action-pypi-publish"] = Action(
         owner="pypa",
