@@ -120,7 +120,7 @@ requires-dist = [
 ]
 
 [package.metadata.requires-dev]
-lint = [{ name = "ruff", specifier = ">=0.14.0" }]
+lint = [{ name = "ruff", specifier = ">=0.14.11" }]
 test = [{ name = "pytest", specifier = ">=8.4.2" }]
 
 [[package]]
