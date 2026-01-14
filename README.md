@@ -1,6 +1,6 @@
 # ci-starter
 
-Kickstarts the semantic release pipeline for your Python project on GitHub. It creates an configuration file _semantic-release.toml_ for python-semantic-release and a pipeline with reusable workflows in _.github/workflows_.
+Kickstarts the semantic release pipeline for your Python project on GitHub. It creates a configuration file _semantic-release.toml_ for python-semantic-release and a pipeline with reusable workflows in _.github/workflows_.
 
 ## Usage
 
@@ -26,16 +26,16 @@ You will have to do the flollowing things yourself:
         - Workflow: `continuous-delivery.yml`
         - Environment name: `testpypi`
     - Create a GitHub repository for your project
-    - Add remote origin and its ssh address at your local clone
+    - Add remote _origin_ and its ssh address at your local clone
 
 ### Create CI/CD Pipeline With ci-starter
 
 Run these commands:
 
 ```text
-$ ci-start psr-config
-$ ci-start workflows
-$ ci-start update-actions
+$ ci-starter psr-config
+$ ci-starter workflows
+$ ci-starter update-actions
 ```
 
 The psr-config command creates the _semantic-release.toml_, the second one creates the workflow files (.github/workflows/*.yml), the third one fetches the current versions of the GitHub Actions used in the workflow files and updates the workflow files accordingly.

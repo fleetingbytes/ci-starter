@@ -30,7 +30,7 @@ configure_logging(logging_configuration)
 
 logger = getLogger(__name__)
 
-entry_point_name = "ci-start"
+entry_point_name = "ci-starter"
 
 
 @group(
