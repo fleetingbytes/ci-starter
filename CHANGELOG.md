@@ -2,6 +2,53 @@
 
 <!-- version list -->
 
+## v0.10.7 (2026-01-14)
+
+### Code Style
+
+- Adopt another linting rule
+  ([`1dceb79`](https://github.com/fleetingbytes/ci-starter/commit/1dceb79627ae1ebc7ca727fb049dc242e3de8f51))
+
+### Continuous Integration
+
+- Update action version and test
+  ([`a849dfb`](https://github.com/fleetingbytes/ci-starter/commit/a849dfb4bd5ab72adf54b179d1ed0841cbe00736))
+
+- Update action version and test
+  ([`a0a60ba`](https://github.com/fleetingbytes/ci-starter/commit/a0a60ba4da40184fcf56c46f06dda335eb899554))
+
+- Update action versions
+  ([`4d7b0b5`](https://github.com/fleetingbytes/ci-starter/commit/4d7b0b5f68a6ae526e48f7c31e9e356e8d2a1205))
+
+- Update action versions
+  ([`8f7f0f4`](https://github.com/fleetingbytes/ci-starter/commit/8f7f0f44915066b608cc8446f6aec1f15704edff))
+
+- Update action versions
+  ([`aa54471`](https://github.com/fleetingbytes/ci-starter/commit/aa5447119ff961140e5c59257750599af19e05ee))
+
+- Update action versions
+  ([`fb4d3ce`](https://github.com/fleetingbytes/ci-starter/commit/fb4d3ce09c841dedf803757a099a47ebefe93b1c))
+
+- Update action versions
+  ([`34d0b0c`](https://github.com/fleetingbytes/ci-starter/commit/34d0b0cd3dceca3689bb6b182a5e06fd1689ff25))
+
+- Update action versions
+  ([`db13a87`](https://github.com/fleetingbytes/ci-starter/commit/db13a87d6a688460882ce4a464c4927bf64e212b))
+
+- Update action versions
+  ([`0e72683`](https://github.com/fleetingbytes/ci-starter/commit/0e726836ba309a6769572338769b285aba9be9c7))
+
+### Refactoring
+
+- Follow RUF067 and have an (almost) empty __init__ file
+  ([`2257be6`](https://github.com/fleetingbytes/ci-starter/commit/2257be6ecd4dac024db5943fe76b74bad17a1d9b))
+
+### Testing
+
+- Update expected versions after update
+  ([`bf642ae`](https://github.com/fleetingbytes/ci-starter/commit/bf642ae7002e6d83f2d64cee93bca3f0b49747d6))
+
+
 ## v0.10.6 (2025-10-12)
 
 ### Refactoring
