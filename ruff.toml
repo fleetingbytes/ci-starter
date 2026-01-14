@@ -33,7 +33,7 @@ select = [
 ]
 
 [lint.per-file-ignores]
-"src/**/cli/__init__.py" = [
+"src/**/cli/cli.py" = [
     "N813",    # camelcase-imported-as-lowercase
     "PLR0913", # too-many-arguments
     "PLR0917", # too-many-positional-arguments
