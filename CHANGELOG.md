@@ -2,6 +2,19 @@
 
 <!-- version list -->
 
+## v0.11.0 (2026-01-14)
+
+### Chores
+
+- Update dependencies
+  ([`96423b6`](https://github.com/fleetingbytes/ci-starter/commit/96423b621ae32bd5cabe7aa01c8cd3df43005aec))
+
+### Features
+
+- Rename entrypoint to 'ci-starter'
+  ([`d2cf257`](https://github.com/fleetingbytes/ci-starter/commit/d2cf257e573307b3b358f598a60d7d0e6ac42a4b))
+
+
 ## v0.10.7 (2026-01-14)
 
 ### Code Style
