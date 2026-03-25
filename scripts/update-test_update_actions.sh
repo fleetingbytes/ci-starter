@@ -24,8 +24,19 @@
 # - provide a GitHub personal access token to avoid getting rate-limited:
 # CI_STARTER_GH_API_TOKEN=<your-access-token-for-github> ./scripts/update-test_update_actions.sh
 
-WORKFLOWS=./.github/workflows
-TEST_FILE=./tests/e2e/test_update_actions.py
+
+get_absolute_path_to_parent_dir_of_this_script() {
+    local absolute_path="$(readlink -f -- "$1")"
+    local parent_dir="$(dirname "$absolute_path")"
+    printf "$parent_dir"
+}
+
+SCRIPT_DIR="$(get_absolute_path_to_parent_dir_of_this_script "$0")"
+PROJECT_DIR=$(dirname "$SCRIPT_DIR")
+
+
+WORKFLOWS="${PROJECT_DIR}/.github/workflows"
+TEST_FILE="${PROJECT_DIR}/tests/e2e/test_update_actions.py"
 
 find_lines_where_action_is_pinned_to_sha_and_commented_with_version() {
     find "$WORKFLOWS" -type f -name "*.yml" \
