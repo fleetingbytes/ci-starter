@@ -43,14 +43,14 @@ def test_update_action(cli_runner: CliRunner, test_project_path_str, step_parser
     expected_actions["actions/upload-artifact"] = Action(
         owner="actions",
         repo="upload-artifact",
-        commit="bbbca2ddaa5d8feaa63e36b76fdaad77386f024f",
-        version=Version.parse("7.0.0"),
+        commit="043fb46d1a93c77aae656e7c1c64a875d1fc6a0a",
+        version=Version.parse("7.0.1"),
     )
     expected_actions["astral-sh/ruff-action"] = Action(
         owner="astral-sh",
         repo="ruff-action",
-        commit="4919ec5cf1f49eff0871dbcea0da843445b837e6",
-        version=Version.parse("3.6.1"),
+        commit="0ce1b0bf8b818ef400413f810f8a11cdbda0034b",
+        version=Version.parse("4.0.0"),
     )
     expected_actions["astral-sh/setup-uv"] = Action(
         owner="astral-sh",
