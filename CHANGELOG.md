@@ -2,6 +2,56 @@
 
 <!-- version list -->
 
+## v0.11.1 (2026-04-16)
+
+### Bug Fixes
+
+- Update dependencies
+  ([`bde3b09`](https://github.com/fleetingbytes/ci-starter/commit/bde3b0905ef8d9b43fb9ac48020df829a4a62e87))
+
+### Chores
+
+- Update dependencies
+  ([`993ca2c`](https://github.com/fleetingbytes/ci-starter/commit/993ca2c2c0703069e95c7cc33b0809d77555b102))
+
+- Update lint dependencies
+  ([`30a338f`](https://github.com/fleetingbytes/ci-starter/commit/30a338fa623af21706b4b748bc7abf794d525a28))
+
+### Continuous Integration
+
+- Update action versions
+  ([`928dd3c`](https://github.com/fleetingbytes/ci-starter/commit/928dd3cff451067022311cb12d23641f9aadc2e8))
+
+- Update action versions
+  ([`d393404`](https://github.com/fleetingbytes/ci-starter/commit/d393404144502a029f447c864620e017abdfaf44))
+
+- Update action versions
+  ([`e81c584`](https://github.com/fleetingbytes/ci-starter/commit/e81c58430b9cf06941b3a84bdb63b70f50c13d79))
+
+- Update action versions
+  ([`9d23aba`](https://github.com/fleetingbytes/ci-starter/commit/9d23aba07021b37e03497dcc9c900b58859ed491))
+
+- Update action versions
+  ([`243ce95`](https://github.com/fleetingbytes/ci-starter/commit/243ce95b24bbca3a355d0b4ca0bc67cf10eb321f))
+
+- Update action versions
+  ([`e504ba1`](https://github.com/fleetingbytes/ci-starter/commit/e504ba16439ea1452d40d97f9fe91995d24433a2))
+
+- Update action versions
+  ([`c48d299`](https://github.com/fleetingbytes/ci-starter/commit/c48d299887516e00537ef43f759da5f0b5bc2404))
+
+- Update action versions
+  ([`d2c4592`](https://github.com/fleetingbytes/ci-starter/commit/d2c4592bd85e9e4b411a890df1514ca1f827129c))
+
+- Update action versions
+  ([`8baf4f0`](https://github.com/fleetingbytes/ci-starter/commit/8baf4f0f48e1617ffafd821fd8947b2591a598e8))
+
+### Testing
+
+- Update expected versions after update
+  ([`7dc41dd`](https://github.com/fleetingbytes/ci-starter/commit/7dc41dd26235a630cef8187bfab0f90020f9465d))
+
+
 ## v0.11.0 (2026-01-14)
 
 ### Chores
