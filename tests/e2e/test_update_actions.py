@@ -25,8 +25,8 @@ def test_update_action(cli_runner: CliRunner, test_project_path_str, step_parser
     expected_actions["actions/checkout"] = Action(
         owner="actions",
         repo="checkout",
-        commit="df4cb1c069e1874edd31b4311f1884172cec0e10",
-        version=Version.parse("6.0.3"),
+        commit="9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0",
+        version=Version.parse("7.0.0"),
     )
     expected_actions["actions/download-artifact"] = Action(
         owner="actions",
