@@ -37,8 +37,8 @@ def test_update_action(cli_runner: CliRunner, test_project_path_str, step_parser
     expected_actions["actions/setup-python"] = Action(
         owner="actions",
         repo="setup-python",
-        commit="a309ff8b426b58ec0e2a45f0f869d46889d02405",
-        version=Version.parse("6.2.0"),
+        commit="ece7cb06caefa5fff74198d8649806c4678c61a1",
+        version=Version.parse("6.3.0"),
     )
     expected_actions["actions/upload-artifact"] = Action(
         owner="actions",
