@@ -49,14 +49,14 @@ def test_update_action(cli_runner: CliRunner, test_project_path_str, step_parser
     expected_actions["astral-sh/ruff-action"] = Action(
         owner="astral-sh",
         repo="ruff-action",
-        commit="0ce1b0bf8b818ef400413f810f8a11cdbda0034b",
-        version=Version.parse("4.0.0"),
+        commit="278981a28ce3188b1e39527901f38254bf3aac89",
+        version=Version.parse("4.1.0"),
     )
     expected_actions["astral-sh/setup-uv"] = Action(
         owner="astral-sh",
         repo="setup-uv",
-        commit="fac544c07dec837d0ccb6301d7b5580bf5edae39",
-        version=Version.parse("8.2.0"),
+        commit="d31148d669074a8d0a63714ba94f3201e7020bc3",
+        version=Version.parse("8.3.0"),
     )
     expected_actions["pypa/gh-action-pypi-publish"] = Action(
         owner="pypa",
