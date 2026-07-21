@@ -25,8 +25,8 @@ def test_update_action(cli_runner: CliRunner, test_project_path_str, step_parser
     expected_actions["actions/checkout"] = Action(
         owner="actions",
         repo="checkout",
-        commit="9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0",
-        version=Version.parse("7.0.0"),
+        commit="3d3c42e5aac5ba805825da76410c181273ba90b1",
+        version=Version.parse("7.0.1"),
     )
     expected_actions["actions/download-artifact"] = Action(
         owner="actions",
@@ -37,8 +37,8 @@ def test_update_action(cli_runner: CliRunner, test_project_path_str, step_parser
     expected_actions["actions/setup-python"] = Action(
         owner="actions",
         repo="setup-python",
-        commit="ece7cb06caefa5fff74198d8649806c4678c61a1",
-        version=Version.parse("6.3.0"),
+        commit="5fda3b95a4ea91299a34e894583c3862153e4b97",
+        version=Version.parse("7.0.0"),
     )
     expected_actions["actions/upload-artifact"] = Action(
         owner="actions",
@@ -61,8 +61,8 @@ def test_update_action(cli_runner: CliRunner, test_project_path_str, step_parser
     expected_actions["pypa/gh-action-pypi-publish"] = Action(
         owner="pypa",
         repo="gh-action-pypi-publish",
-        commit="cef221092ed1bacb1cc03d23a2d87d1d172e277b",
-        version=Version.parse("1.14.0"),
+        commit="ba38be9e461d3875417946c167d0b5f3d385a247",
+        version=Version.parse("1.14.1"),
     )
 
     for file in workflows:
