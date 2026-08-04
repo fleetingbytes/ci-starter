@@ -61,8 +61,8 @@ def test_update_action(cli_runner: CliRunner, test_project_path_str, step_parser
     expected_actions["pypa/gh-action-pypi-publish"] = Action(
         owner="pypa",
         repo="gh-action-pypi-publish",
-        commit="ba38be9e461d3875417946c167d0b5f3d385a247",
-        version=Version.parse("1.14.1"),
+        commit="dc37677b2e1c63e2034f94d8a5b11f265b73ba33",
+        version=Version.parse("1.14.2"),
     )
 
     for file in workflows:
