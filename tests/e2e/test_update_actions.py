@@ -55,8 +55,8 @@ def test_update_action(cli_runner: CliRunner, test_project_path_str, step_parser
     expected_actions["astral-sh/setup-uv"] = Action(
         owner="astral-sh",
         repo="setup-uv",
-        commit="c771a70e6277c0a99b617c7a806ffedaca235ff9",
-        version=Version.parse("9.0.0"),
+        commit="20cfd1bf945f4377ade1205e4dbc17946fc9a30d",
+        version=Version.parse("10.0.1"),
     )
     expected_actions["pypa/gh-action-pypi-publish"] = Action(
         owner="pypa",
