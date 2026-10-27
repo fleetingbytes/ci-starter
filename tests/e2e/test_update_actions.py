@@ -37,8 +37,8 @@ def test_update_action(cli_runner: CliRunner, test_project_path_str, step_parser
     expected_actions["actions/setup-python"] = Action(
         owner="actions",
         repo="setup-python",
-        commit="5fda3b95a4ea91299a34e894583c3862153e4b97",
-        version=Version.parse("7.0.0"),
+        commit="6d4fd22b20465ccc0f7354476588e8df7c9ca0e0",
+        version=Version.parse("7.1.0"),
     )
     expected_actions["actions/upload-artifact"] = Action(
         owner="actions",
@@ -55,14 +55,14 @@ def test_update_action(cli_runner: CliRunner, test_project_path_str, step_parser
     expected_actions["astral-sh/setup-uv"] = Action(
         owner="astral-sh",
         repo="setup-uv",
-        commit="1c37ad07a6a961277cf70c0d37d6f313000f5884",
-        version=Version.parse("10.3.0"),
+        commit="07a047e608db84b3d8c06cd9a7c7dcc9c355c18e",
+        version=Version.parse("10.3.2"),
     )
     expected_actions["pypa/gh-action-pypi-publish"] = Action(
         owner="pypa",
         repo="gh-action-pypi-publish",
-        commit="dc37677b2e1c63e2034f94d8a5b11f265b73ba33",
-        version=Version.parse("1.14.2"),
+        commit="7245906fb61fa33a13554f9d5fb856fe61758086",
+        version=Version.parse("1.14.3"),
     )
 
     for file in workflows:
